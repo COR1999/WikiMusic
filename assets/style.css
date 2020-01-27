@@ -1,0 +1,150 @@
+/*My colors Shandy Brown="#FC9F5B" Tuscan="#FBD1A2" Dutch White="#ECE4B7" Pearl Aqua="#7DCFB6" UFO Green="#33CA7F"*/
+
+
+
+body{
+    background-color: #ECE4B7;
+    font-weight: 400;
+}
+.btn{
+    display: inline-block;
+    font-weight: 400;
+    color: #212529;
+    text-align: center;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    user-select: none;
+    background-color: transparent;
+    border: 1px solid transparent;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+
+/*Search Form*/
+.search-bar{
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    padding-top: 20px;
+}
+#search-form input{
+    width: 300px;
+    color: #FC9F5B;
+    text-align: center;
+    margin-top: 10px;
+
+}
+
+#search-form button{
+    margin-top: 20px;
+    width: 100px;
+    height: 50px;
+    border-radius: 30%;
+    font-weight: 400;
+    margin-bottom: 20px;
+    color: #FC9F5B;
+    border: 2px solid #FC9F5B;
+}
+
+#search-form button:hover{
+    background-color: #FC9F5B;
+    color: #ECE4B7;
+}
+#search-form h1{
+    font-weight: 600;
+    color: #FC9F5B;
+}
+
+/*Artist card*/
+#artist-card{
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    padding: 10px;
+}
+
+#artist-card h2{
+    font-size: 28px;
+    color: #FC9F5B;
+}
+
+
+#artist-songs a{
+    color: #874;
+    padding: 5px;
+}
+
+#artist-songs li{
+    list-style: none;
+}
+
+
+/*Nav Bar*/
+
+.bg-navbar{
+    background-color: #FC9F5B;
+}
+.navbar-light .navbar-brand,
+.navbar-light .navbar-nav .active>.nav-link,
+.navbar-light .navbar-nav .nav-link{
+    color: #ECE4B7;
+    padding: 10px;
+    font-weight: 600;
+
+}
+
+
+
+.navbar-light a:hover{
+    color: #FC9F5B;
+    background-color: #ECE4B7;
+}
+.active{
+    color: #ECE4B7;
+    border-bottom: 2px solid #ECE4B7;
+    border-bottom-width: 2px;
+}
+
+.navbar button:hover{
+    background-color: #ECE4B7;
+    color: #7DCFB6;
+}
+.navbar button{
+    color: #ECE4B7;
+    font-weight: 600;
+    border-color: #ECE4B7;
+}
+
+.form-control{
+    background-color: #ECE4B7;
+    color: #FC9F5B;
+    border: 1px solid #7DCFB6;
+}
+
+.navbar-toggler{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/*Hero image*/
+.hero-image{
+    background-image: url("../assets/images/headpones-guy.jpeg");
+    background-position: center;
+    background-repeat: no-repeat;
+    width: auto;
+    height: 750px;
+}
+
+
+
+/*Footer*/
+.page-footer a{
+    color: #FC9F5B;
+}
+.page-footer{
+    background-color:#7DCFB6;
+}
