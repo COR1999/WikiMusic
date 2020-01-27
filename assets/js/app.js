@@ -1,60 +1,135 @@
+let baseUrl = "http://ws.audioscrobbler.com"
+let apiKey = "977e2d82b14fe34163d15b95f2c1ce55"
 
-// require('config.json');
+
 
 $(document).ready(function () {
 
-    $("#search").on("click", searchApi);
-    // Get the input field
-    document.getElementById("myInput").addEventListener("keyup", function (event) {
-        event.preventDefault();
-        if (event.keyCode === 13) {
-            document.getElementById("search").click();
-        }
-    });
-
-});
-function refreshToken(token) {
-    
-}
-
-
-
-
-function searchApi() {
-    var token = 'BQCaY-Mu87Mcnxf9k5_GGWuJGNQ7okr_fnuinXEQBxAaSI-OJCPiWtZG1wRHaaA21S9rSXaRmSpsU-lYTubkHHB_0DyMpV8C2na9e5f5gyyz11PskF1FM-SkDNFciXwS8TF4QDHiOXDyRYx6x6Z_v6fFAk3gu-29mfk'
-
-    $.ajax({
-        url: 'https://api.spotify.com/v1/search?type=artist&query=' + $("#myInput").val(),
-        headers: {
-            Authorization: 'Bearer ' + token,
-            // client_id: client_id,
-            // client_secret: client_secret
-        },
-    })
-        .then(function (oData) {
-            var artistId = oData.artists.items[0].id;
-            $.ajax({
-                url: 'https://api.spotify.com/v1/artists/' + artistId + '/top-tracks?country=IE',
-                headers: {
-                    Authorization: 'Bearer ' + token
-                },
-            }).then(function (response) {
-                let songName = []
-                let playNow = []
-                response.tracks.forEach(function (album) {
-                    songName.push("<li>" + album.name + '<a href="' + album.external_urls.spotify + '" target="_blank"> Play Now</a></li>');
-                    // playNow.push('<a href="' + album.external_urls.spotify + '">Play Now</a>');
-                    console.log(album.external_urls.spotify);
-                })
-                $('#artist-songs').html(songName);
-                // $('#artist-playNow').html(playNow);
-
-            });
-            let artistName = oData.artists.items[0].name;
-            $('#artist-name').html(`<h2>${artistName}</h2>`)
-
-            let artistImage = oData.artists.items[0].images[1].url;
-            $('#artist-image').html(`<img src="${artistImage}">`)
+    $("#search").on("click", function () {
+        // Artist Search 
+        let input = $("#myInput").val();
+        console.log(input);
+        $.ajax({
+            "async": true,
+            "crossDomain": true,
+            "url": `${baseUrl}/2.0/?method=artist.search&artist=${input}&api_key=${apiKey}&format=json`,
+            "method": "GET",
+        }).then(function (response) {
+            console.log(response.results.artistmatches.artist[0])
         })
-}
 
+    })
+
+
+    // // console.log(input.value.toString());
+
+
+})
+// Material Select
+$('.mdb-select').materialSelect({
+});
+
+
+
+// let baseUrl = "https://deezerdevs-deezer.p.rapidapi.com/"
+// let searchUrl = "https://deezerdevs-deezer.p.rapidapi.com/artist/"
+
+
+
+// function searchApi() {
+//     let input = $("#myInput").val();
+//     let settings = {
+//         "async": true,
+//         "crossDomain": true,
+//         "url": `https://deezerdevs-deezer.p.rapidapi.com/search?q=` + input,
+//         "method": "GET",
+//         "headers": {
+//             "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
+//             "x-rapidapi-key": "5374ac71aamsh28799f9ee90f681p14740djsn101c4922f345"
+//         }
+//     };
+
+//     $.ajax(settings).done(function (response) {
+//         console.log(response);
+
+
+//         let artistID = response.data[0].artist.id
+
+//         $.ajax({
+//             "async": true,
+//             "crossDomain": true,
+//             "url": `https://deezerdevs-deezer.p.rapidapi.com/artist/` + artistID,
+//             "method": "GET",
+//             "headers": {
+//                 "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
+//                 "x-rapidapi-key": "5374ac71aamsh28799f9ee90f681p14740djsn101c4922f345"
+//             }
+//         }).then(function (data) {
+//             console.log(data);
+//             let artistName = data.name;
+//             let artistImage = data.picture_medium;
+//             let artistTrackList = data.tracklist;
+//             console.log(artistName, artistTrackList, artistImage)
+//             $('#artist-image').html(`<img src="${artistImage}">`)
+//             $('#artist-songs').html(`<li>${artistTrackList}</li>`)
+//             console.log(artistTrackList)
+//             $.ajax({
+//                 "async": true,
+//                 "crossDomain": true,
+//                 "url": `${artistTrackList}`,
+//                 "method": "GET",
+//                 "timeout": 0,
+//                 "headers": {
+//                     "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
+//                     "x-rapidapi-key": "5374ac71aamsh28799f9ee90f681p14740djsn101c4922f345",
+//                     // "Access-Control-Allow-Origin": "*",
+//                     // "Access-Control-Allow-Methods": "GET,HEAD,OPTIONS,POST,PUT",
+//                     // "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, Authorization",
+//                 }
+//             }).then(function (response) {
+//                 console.log(response)
+//             })
+//         })
+
+//     })
+// };
+
+
+
+// $("#search").on("click", function () {
+//     $.ajax(settings).done(function (response) {
+//         // let artistName = response.name;
+//         // let artistID = response.data[0].artist.id
+//         // let artistImage = response.picture;
+//         // let artistTrackList = response.tracklist;
+//         console.log(response);
+//     });
+// })
+// document.getElementById("myInput").addEventListener("keyup", function (event) {
+//     event.preventDefault();
+//     if (event.keyCode === 13) {
+//         document.getElementById("search").click();
+//     }
+// });
+
+
+    //     let input = $("#myInput").val();
+
+    //     console.log(typeof (input));
+    //     $.ajax({
+    //         "async": true,
+    //         "crossDomain": true,
+    //         "url": `https://api.deezer.com/search?q=` + input,
+    //         "method": "GET",
+    //         "headers": {
+    //             "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
+    //             "x-rapidapi-key": "5374ac71aamsh28799f9ee90f681p14740djsn101c4922f345"
+    //         }
+    //     }).then(function (response) {
+    //         console.log(response);
+    //         let artistName = response.name;
+    //         // let artistID = response.
+    //         let artistImage = response.picture;
+    //         let artistTrackList = response.tracklist;
+    //         console.log(artistTrackList, artistImage, artistName);
+    //     })

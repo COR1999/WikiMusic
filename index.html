@@ -43,8 +43,18 @@
 	<section class="container-fluid">
 		<div class="search-bar">
 			<div id="search-form">
-				<h1>Search for artist's Top 10 song's</h1>
-				<input class="form-control ml-auto mr-auto" type="text" id="myInput" value="ABBA"><br>
+				<!--Blue select-->
+
+				<label class="mdb-main-label">Search by: </label>
+				<select class="mdb-select md-form colorful-select dropdown-primary" searchable="Search here..">
+					<option value="1">Artist</option>
+					<option value="2">Album</option>
+					<option value="3">Song name</option>
+					<option value="4">Genre</option>
+					<option value="5">Charts</option>
+				</select>
+
+				<input class="form-control ml-auto mr-auto" type="text" id="myInput"><br>
 				<button class="btn" type="button" id="search">Search</button>
 			</div>
 		</div>
@@ -56,7 +66,7 @@
 				<div id="artist-name">
 
 				</div>
-				<ul id=artist-songs>
+				<ul id="artist-songs">
 				</ul>
 				<!-- <div id="artist-playNow">
 
