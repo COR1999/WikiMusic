@@ -20,14 +20,12 @@ $(document).ready(function () {
 
     })
 
-
     // // console.log(input.value.toString());
 
 
 })
 // Material Select
-$('.mdb-select').materialSelect({
-});
+
 
 
 
