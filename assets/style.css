@@ -31,7 +31,7 @@ body{
     text-align: center;
     padding-top: 20px;
 }
-#search-form input{
+.search-form input{
     width: 300px;
     color: #FC9F5B;
     text-align: center;
@@ -39,7 +39,7 @@ body{
 
 }
 
-#search-form button{
+.search-form button{
     margin-top: 20px;
     width: 100px;
     height: 50px;
@@ -50,14 +50,51 @@ body{
     border: 2px solid #FC9F5B;
 }
 
-#search-form button:hover{
+.search-form button:hover{
     background-color: #FC9F5B;
     color: #ECE4B7;
 }
-#search-form h1{
+.search-form h1{
     font-weight: 600;
     color: #FC9F5B;
 }
+
+.dropdown{
+    width:100px;
+    display: inline-block;
+    background-color: #ECE4B7;
+    transition: all .5s ease;
+    position: relative;
+    font-size: 14px;
+    height: 100%;
+    text-align: center;
+    color: #FC9F5B;
+    text-align: center;
+    margin-top: 10px;
+    border: 1px solid #7DCFB6;
+    margin-left: 10px;
+}
+
+.dropdown .select {
+    width:100px;
+    cursor: pointer;
+    display: block;
+    padding: 10px;
+    text-align: center;
+}
+.dropdown-menu{
+    text-align: center;
+    width:100px;
+    min-width: 0;
+
+}
+.dropdown-menu li{
+    width: 100px;
+}
+.dropdown-menu li:hover{
+    background-color: #FC9F5B;
+}
+
 
 /*Artist card*/
 #artist-card{

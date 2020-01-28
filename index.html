@@ -41,25 +41,34 @@
 
 
 	<section class="container-fluid">
+
 		<div class="search-bar">
-			<div id="search-form">
-				<!--Blue select-->
-
-				<label class="mdb-main-label">Search by: </label>
-				<select class="mdb-select md-form colorful-select dropdown-primary" searchable="Search here..">
-					<option value="1">Artist</option>
-					<option value="2">Album</option>
-					<option value="3">Song name</option>
-					<option value="4">Genre</option>
-					<option value="5">Charts</option>
-				</select>
-
-				<input class="form-control ml-auto mr-auto" type="text" id="myInput"><br>
+			<span class="choose">Search By</span>
+			<div class="dropdown">
+				<div class="select">
+					<span>Select</span>
+				</div>
+				<input type="hidden" name="gender">
+				<ul class="dropdown-menu">
+					<li id="artist">Artist</li>
+					<li id="album">Album</li>
+					<li id="song">Song</li>
+					<li id="chart">Chart</li>
+				</ul>
+			</div>
+			<!-- <div class="chart-button">
+				<button class="btn" type="button" id="chart">Charts</button>
+			</div> -->
+			<div class="search-form">
+				<input class="form-control ml-auto mr-auto" type="text" id="myInput" value="Search"><br>
 				<button class="btn" type="button" id="search">Search</button>
 			</div>
 		</div>
 		<div>
 			<div id="artist-card">
+				<div id="artist-list"></div>
+				<div id="album-list"></div>
+				<div id="track-list"></div>
 				<div id="artist-image">
 
 				</div>
