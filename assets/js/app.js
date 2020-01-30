@@ -6,74 +6,32 @@ let dropdownValue;
 
 $(document).ready(function () {
 
-    // artistSearch = document.querySelector("artist").selected;
-    // console.log(artistSearch);
-    // // console.log(input.value.toString());
-
-    /*Dropdown Menu*/
-    let transitonTimeMs = 300;
-    $('.dropdown').click(function () {
-        $(this).attr('tabindex', 1).focus();
-        $(this).toggleClass('active');
-        $(this).find('.dropdown-menu').slideToggle(transitonTimeMs);
-    });
-    $('.dropdown').focusout(function () {
-        $(this).removeClass('active');
-        $(this).find('.dropdown-menu').slideUp(transitonTimeMs);
-    });
-    // let dropdownValue;
-    $('.dropdown .dropdown-menu li').click(function () {
-        // dropdownValue = ""
-        // dropdownValue.replace(dropdownValue, "");
-        $(this).parents('.dropdown').find('span').text($(this).text());
-        $(this).parents('.dropdown').find('input').attr('value', $(this).attr('id'));
-        // console.log($(this).attr("id"));
-        dropdownValue = $(this).attr("id").toLowerCase();
-        // console.log(dropdownValue);
-        // console.log(dropdownValue)
-        searchTheAPI(dropdownValue);
-
-
-        $(this).removeClass('active');
-        $(this).find('.dropdown-menu').slideUp(transitonTimeMs);
-    });
-    /*End Dropdown Menu*/
 })
-$("#search").on("click", searchTheAPI);
 
 
-function searchTheAPI(dropdownValue) {
-    // $("#search").on("click", function () {
+
+function GetSelectedValue() {
+    let e = document.getElementById("option-menu");
+    let result = e.options[e.selectedIndex].value;
+    $(e).focus();
+    $(result).toggleClass('active');
+    console.log(result);
+    searchTheAPI(result);
+}
+
+
+function searchTheAPI(result) {
+
     $("#artist-list").empty()
     $("#album-list").empty()
     $("#track-list").empty()
 
-    // artist-list
-    //     album-list
-    // track-list
-    // Artist Search 
     let input;
-    let searchType = dropdownValue;
+    let searchType = result;
     console.log(searchType);
 
     input = $("#myInput").val();
-    // console.log(typeof (searchType))
-    if (searchType === "artist") {
-        apiUrl(searchType, input)
-            .then(function (response) {
-                // console.log(response.results.artistmatches.artist[0])
-                let artistArray = response.results.artistmatches.artist;
-                let newArtistArray = [];
-                // console.log(response.results)
-                artistArray.forEach(function (artist) {
-                    newArtistArray.push(`<img src="${artist.image[1]["#text"]}"><h4>${artist.name}</h4><p></p>`)
-                    // console.log(artist);
-                })
-                // console.log(response)
-                // console.log(newAlbumArray);
-                $("#artist-list").html(newArtistArray);
-            })
-    } else if (searchType === "album") {
+    if (searchType === "album") {
         apiUrl(searchType, input)
             .then(function (response) {
                 // console.log(response)
@@ -81,7 +39,7 @@ function searchTheAPI(dropdownValue) {
                 // let newAlbumArray = [];
                 let rows = [];
                 let cardRow = [];
-                let NumberPerRow = 12;
+                let NumberPerRow = 3;
                 albumArray.forEach(function (album, index) {
                     let imageIndex = 2;
                     let albumImage = `<img src="${album.image[imageIndex]["#text"]}">`
@@ -89,10 +47,10 @@ function searchTheAPI(dropdownValue) {
                     if (album.image.length >= 2) {
                         if (album.image[imageIndex]["#text"] === "") {
                             // console.log("working" album.artist);
-                            albumImage = "<h2>Cant retrieve Image</h2>"
+                            albumImage = `<img class="no-imagesizeing" src="assets/images/no-image-available.png">`
                         }
                     }
-                    cardRow.push(`<div class="card col-sm-6 col-md-3">${albumImage}<h1>${album.artist}</h1><p class="title">${album.name}</p></div>`)
+                    cardRow.push(`<div class="card col-sm-12 col-md-12 col-lg-4">${albumImage}<h1>${album.artist}</h1><p class="title">${album.name}</p><button id="view-songs${index}">View Songs For${album.name}</button></div>`)
                     if ((index + 1) % NumberPerRow === 0 || (index + 1) === albumArray.length) {
                         // cardRow.push(`<div class="card">${albumImage}<h1>${album.artist}</h1><p class="title">${album.name}</p></div>`)
                         rows.push(`<div class="row">${cardRow}</div>`);
@@ -101,11 +59,31 @@ function searchTheAPI(dropdownValue) {
                         // console.log("cardRow:", cardRow)
                         // console.log(index)
                     }
-                    // console.log("rows:", rows)
-                    // console.log("cardRow:", cardRow)
-                    // console.log("index:", index)
-                    // console.log(album);
+                    $.ajax({
+                        "async": true,
+                        "crossDomain": true,
+                        "url": `${baseUrl}/2.0/?method=album.getinfo&api_key=${apiKey}&artist=${album.artist}&album=${album.name}&format=json`,
+                        "method": "GET",
+                    }).then(function (data) {
+                        let arrayOfTracks = data.album.tracks.track;
+                        // console.log(data.album.tracks.track)
+                        arrayOfTracks.forEach(function (track) {
+                            // console.log(track)
+                            // console.log(track.name)
+                            // console.log(album.name)
+                            $(`#view-songs${index}`).on("click", function () {
+                                console.log("index", index)
+                                console.log("track:", track.name)
+                            })
+                            // if (track.name === arrayOfTracks) {
+                            //     console.log(track.name)
+                            // }
+                        })
+
+                    })
+
                 })
+
 
                 // console.log("rows:", rows)
                 // console.log("cardRow:", cardRow)
@@ -118,11 +96,12 @@ function searchTheAPI(dropdownValue) {
                 let trackArray = response.results.trackmatches.track;
                 let newTrackArray = [];
                 trackArray.forEach(function (track) {
-                    newTrackArray.push(`<h4>${track.name}</h4><p>${track.artist}</p>`)
+                    newTrackArray.push(`<div class=""><h4>Song Name: ${track.name}</h4><p>Artist: ${track.artist}<br>
+                    Total listens: ${track.listeners}</p>`)
                 })
                 $("#track-list").html(newTrackArray);
 
-                // console.log(response.results.trackmatches.track);
+                console.log(response.results.trackmatches);
             })
     } else if (searchType === "chart") {
         apiUrl(searchType)
@@ -169,19 +148,16 @@ function apiUrl(searchType, input) {
         }))
 }
 
+//https://codepen.io/cristinaconacel/pen/ePVMME
 
 
-
-function GetSelectedValue() {
-    var e = document.getElementById("option-menu");
-    var result = e.options[e.selectedIndex].value;
-
-    document.getElementById("result").innerHTML = result;
-}
-
-function GetSelectedText() {
-    var e = document.getElementById("option-menu");
-    var result = e.options[e.selectedIndex].text;
-
-    document.getElementById("result").innerHTML = result;
-
+// function albumAndArtist(album) {
+//     $.ajax({
+//         "async": true,
+//         "crossDomain": true,
+//         "url": `${baseUrl}/2.0/?method=album.getinfo&api_key=${apiKey}&artist=${album.artist}&album=${album.name}&format=json`,
+//         "method": "GET",
+//     }).then(function (data) {
+//         console.log(data);
+//     })
+// }

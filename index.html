@@ -38,36 +38,25 @@
 		<div class="hero-image">
 		</div>
 	</section>
-
-
+	
 	<section class="container-fluid">
-		<select id="option-menu">
-			<option value="None">-- Select --</option>
-			<option value="album">Album</option>
-			<option value="song" selected>Song</option>
-			<option value="chart">Chart</option>
-		</select>
 
 		<div class="search-bar">
 			<span class="choose">Search By</span>
 			<div class="dropdown">
-				<div class="select">
-					<span>Select</span>
-				</div>
-				<input type="hidden" name="gender">
-				<ul class="dropdown-menu">
-					<li id="artist">Artist</li>
-					<li id="album">Album</li>
-					<li id="song">Song</li>
-					<li id="chart">Chart</li>
-				</ul>
+				<select id="option-menu">
+					<option value="None" selected>-- Select --</option>
+					<option value="album">Album</option>
+					<option value="song">Song</option>
+					<option value="chart">Chart</option>
+				</select>
 			</div>
 			<!-- <div class="chart-button">
 				<button class="btn" type="button" id="chart">Charts</button>
 			</div> -->
 			<div class="search-form">
 				<input class="form-control ml-auto mr-auto" type="text" id="myInput" value="Input"><br>
-				<button class="btn" type="button" id="search">Search</button>
+				<button class="btn" type="button" id="search" onclick="GetSelectedValue()">Search</button>
 			</div>
 		</div>
 		<div class="container artist-cards">

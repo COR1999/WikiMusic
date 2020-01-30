@@ -82,16 +82,14 @@ body{
     padding: 10px;
     text-align: center;
 }
-.dropdown-menu{
+.option-menu{
     text-align: center;
     width:100px;
     min-width: 0;
 
 }
-.dropdown-menu li{
-    width: 100px;
-}
-.dropdown-menu li:hover{
+
+.option-menu:hover{
     background-color: #FC9F5B;
 }
 
@@ -141,7 +139,7 @@ body{
     background-color: #ECE4B7;
 }
 .active{
-    color: #ECE4B7;
+    /* color: #ECE4B7; */
     border-bottom: 2px solid #ECE4B7;
     border-bottom-width: 2px;
 }
@@ -192,8 +190,10 @@ artist-cards{
 
 }
 .card {
-    height: 300px;
+    /* max-height: 300px;
+    max-width: 300px; */
     width: 300px;
+    height: 300px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     margin-left: auto;
     margin-right: auto;
@@ -217,7 +217,10 @@ a {
 
 .card img{
     /* width: 64px; */
+    width: auto;
+    height: auto;
     margin: auto;
+    padding:10px;
 
 }
 .card p{
@@ -228,3 +231,17 @@ a {
 .card h1{
     font-size: 20px;
 }
+
+.no-imagesizeing{
+    max-width: 174px;
+}
+
+
+
+
+
+#card-title{
+    width: 33%;
+    margin: 0;
+}
+
