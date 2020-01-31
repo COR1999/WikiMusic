@@ -86,7 +86,11 @@ body{
     text-align: center;
     width:100px;
     min-width: 0;
+    /* background-color: #FC9F5B; */
 
+}
+select{
+    background-color: #ECE4B7;
 }
 
 .option-menu:hover{
@@ -130,22 +134,28 @@ body{
     padding: 10px;
     font-weight: 600;
 
+
 }
+
 
 
 
 .navbar-light a:hover{
     color: #FC9F5B;
-    background-color: #ECE4B7;
+
+    /* background-color: #ECE4B7; */
 }
 .active{
     /* color: #ECE4B7; */
     border-bottom: 2px solid #ECE4B7;
     border-bottom-width: 2px;
 }
+.active:hover{
+    /* color: #7DCFB6; */
 
+}
 .navbar button:hover{
-    background-color: #ECE4B7;
+    /* background-color: #ECE4B7; */
     color: #7DCFB6;
 }
 .navbar button{
@@ -192,11 +202,11 @@ artist-cards{
 .card {
     /* max-height: 300px;
     max-width: 300px; */
-    width: 300px;
-    height: 300px;
+    /* width: 300px;
+    height: 300px; */
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    margin-left: auto;
-    margin-right: auto;
+    /* margin-left: 0.0%;
+    margin-right: 0.0%; */
     text-align: center;
     margin-top: 10px;
     margin-bottom: 10px;
@@ -220,7 +230,7 @@ a {
     width: auto;
     height: auto;
     margin: auto;
-    padding:10px;
+    padding:20px;
 
 }
 .card p{
@@ -229,11 +239,20 @@ a {
 }
 
 .card h1{
-    font-size: 20px;
+    font-size: 18px;
 }
 
 .no-imagesizeing{
     max-width: 174px;
+}
+.viewAlbum-songs{
+    margin: auto;
+    margin-bottom: 25px;
+    background-color: #ECE4B7;
+    border: 1px solid #FC9F5B;
+    color: #FC9F5B;
+    font-weight: 600;
+    height: 40px;
 }
 
 
@@ -267,7 +286,6 @@ a {
 .album-songs ul {
     display: inline-flex;
     flex-wrap: wrap;
-    width: 90%;
 }
 
 .album-songs li{
@@ -275,3 +293,4 @@ a {
     width: 150px;
     height: auto;
 }
+
