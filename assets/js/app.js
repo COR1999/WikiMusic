@@ -1,4 +1,4 @@
-let baseUrl = "http://ws.audioscrobbler.com"
+let baseUrl = "https://ws.audioscrobbler.com"
 let apiKey = "977e2d82b14fe34163d15b95f2c1ce55"
 let dropdownValue;
 
