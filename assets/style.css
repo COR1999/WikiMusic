@@ -167,7 +167,7 @@ body{
 
 /*Hero image*/
 .hero-image{
-    background-image: url("../assets/images/headpones-guy.jpeg");
+    background-image: url("../assets/images/headphones-guy.jpeg");
     background-position: center;
     background-repeat: no-repeat;
     width: auto;
@@ -245,3 +245,33 @@ a {
     margin: 0;
 }
 
+
+.list-songs{
+    list-style: decimal;
+    list-style-position: inside;
+    margin: auto;
+    /* width: 80%; */
+}
+/**/
+.album-songs img{
+    width: auto;
+    height: auto;
+    padding: 10px;
+}
+.album-songs{
+    text-align: center;
+    font-size: 18px;
+
+}
+
+.album-songs ul {
+    display: inline-flex;
+    flex-wrap: wrap;
+    width: 90%;
+}
+
+.album-songs li{
+    padding: 10px;
+    width: 150px;
+    height: auto;
+}

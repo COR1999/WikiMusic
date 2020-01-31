@@ -22,9 +22,9 @@ function GetSelectedValue() {
 
 function searchTheAPI(result) {
 
-    $("#artist-list").empty()
-    $("#album-list").empty()
-    $("#track-list").empty()
+    // $("#artist-list").empty()
+    // $("#album-list").empty()
+    // $("#track-list").empty()
 
     let input;
     let searchType = result;
@@ -40,6 +40,7 @@ function searchTheAPI(result) {
                 let rows = [];
                 let cardRow = [];
                 let NumberPerRow = 3;
+                let trackOuter = [];
                 albumArray.forEach(function (album, index) {
                     let imageIndex = 2;
                     let albumImage = `<img src="${album.image[imageIndex]["#text"]}">`
@@ -50,7 +51,7 @@ function searchTheAPI(result) {
                             albumImage = `<img class="no-imagesizeing" src="assets/images/no-image-available.png">`
                         }
                     }
-                    cardRow.push(`<div class="card col-sm-12 col-md-12 col-lg-4">${albumImage}<h1>${album.artist}</h1><p class="title">${album.name}</p><button id="view-songs${index}">View Songs For${album.name}</button></div>`)
+                    cardRow.push(`<div class="card col-sm-12 col-md-12 col-lg-4">${albumImage}<h1>${album.artist}</h1><p class="title">${album.name}</p><button id="view-songs${index}">View Songs For This album</button></div>`)
                     if ((index + 1) % NumberPerRow === 0 || (index + 1) === albumArray.length) {
                         // cardRow.push(`<div class="card">${albumImage}<h1>${album.artist}</h1><p class="title">${album.name}</p></div>`)
                         rows.push(`<div class="row">${cardRow}</div>`);
@@ -67,27 +68,38 @@ function searchTheAPI(result) {
                     }).then(function (data) {
                         let arrayOfTracks = data.album.tracks.track;
                         // console.log(data.album.tracks.track)
+                        let trackArray = [];
+
                         arrayOfTracks.forEach(function (track) {
                             // console.log(track)
                             // console.log(track.name)
                             // console.log(album.name)
                             $(`#view-songs${index}`).on("click", function () {
-                                console.log("index", index)
-                                console.log("track:", track.name)
+                                // console.log("index", index)
+                                // console.log("track:", track.name)
+                                trackArray.push(`<li>${track.name}<br>Duration: ${track.duration}</li>`)
+
+                                // console.log(trackArray);
+                                // trackOuter.push(`<div  id="${index}"><p>${track.name}</p></div>`)
+                                console.log(arrayOfTracks)
+
+                                $(".artist-cards").html(`<div class="album-songs">${albumImage}<ul class="list-songs">${trackArray}</ul></div>`.replace(/,/g, ""))
                             })
                             // if (track.name === arrayOfTracks) {
                             //     console.log(track.name)
                             // }
                         })
-
                     })
 
                 })
 
 
+
                 // console.log("rows:", rows)
                 // console.log("cardRow:", cardRow)
                 // console.log(newAlbumArray);
+
+                // $("#artist-songs").html(`${trackOuter}`.replace(/,/g, ""))
                 $(".artist-cards").html(`${rows}`.replace(/,/g, ""))
             })
     } else if (searchType === "song") {
