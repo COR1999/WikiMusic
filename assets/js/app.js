@@ -5,7 +5,14 @@ let dropdownValue;
 
 
 $(document).ready(function () {
-
+    $('#myInput').keydown(function (event) {
+        if (event.keyCode == '13') {
+            $("#search").click();
+        }
+        else {
+            //do nothing :)
+        }
+    });
 })
 
 
