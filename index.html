@@ -44,35 +44,34 @@
 	<section class="container-fluid">
 
 		<div class="search-bar">
-			<span class="choose">Search By</span>
+			<span class="choose">Search by:</span>
 			<div class="dropdown">
 				<select id="option-menu">
 					<option value="None" selected>-- Select --</option>
 					<option value="album">Album</option>
 					<option value="song">Song</option>
-					<option value="chart">Chart</option>
+					<!-- <option value="chart">Chart</option> -->
+					<input type="button" value="Chart" id="chart">
 				</select>
+
 			</div>
 			<!-- <div class="chart-button">
 				<button class="btn" type="button" id="chart">Charts</button>
 			</div> -->
 			<div class="search-form">
 				<input class="form-control ml-auto mr-auto" type="search" id="myInput">
+
 				<br>
-				<button class="btn" type="button" id="search" onclick="GetSelectedValue()"><i
-						class="fa fa-search"></i></button>
+				<button class="btn" type="button" id="search"><i class="fa fa-search"></i></button>
 			</div>
 		</div>
 		<div class="container artist-cards">
 			<div id="artist-card">
 				<div id="artist-list">
-
 				</div>
 				<div id="album-list"></div>
 				<div id="track-list"></div>
-
 				<!-- <div id="artist-playNow">
-
 				</div> -->
 			</div>
 		</div>

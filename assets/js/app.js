@@ -1,10 +1,13 @@
 let baseUrl = "https://ws.audioscrobbler.com"
 let apiKey = "977e2d82b14fe34163d15b95f2c1ce55"
 let dropdownValue;
-
+let submit = document.getElementById('search'),
+    myInput = document.getElementById("myInput");
 
 
 $(document).ready(function () {
+    let chart = document.getElementById("chart");
+    chart.addEventListener("click", function () { getCharts() })
     $('#myInput').keydown(function (event) {
         if (event.keyCode == '13') {
             $("#search").click();
@@ -13,6 +16,10 @@ $(document).ready(function () {
             //do nothing :)
         }
     });
+    submit.addEventListener("click", function () {
+        GetSelectedValue();
+    });
+
 })
 
 
@@ -28,11 +35,9 @@ function GetSelectedValue() {
 
 
 function searchTheAPI(result) {
-
     // $("#artist-list").empty()
     // $("#album-list").empty()
     // $("#track-list").empty()
-
     let input;
     let searchType = result;
     console.log(searchType);
@@ -74,20 +79,28 @@ function searchTheAPI(result) {
         apiUrl(searchType, input)
             .then(function (response) {
                 let trackArray = response.results.trackmatches.track;
-                let newTrackArray = [];
-                trackArray.forEach(function (track) {
-                    newTrackArray.push(`<div class=""><h4>${track.name}</h4><p>Artist: ${track.artist}<br>
-                    Total listens: ${track.listeners}</p>`)
-                })
-                $("#track-list").html(newTrackArray);
 
-                console.log(response.results.trackmatches);
+                let newTrackArray = [];
+                let NumberPerRow = 4;
+                let newTrackArrayRow = [];
+                trackArray.forEach(function (track, index) {
+                    newTrackArray.push(`<div class="songs-search col-sm-6 col-md-4 col-lg-2"><h4>${track.name}</h4><p>Artist: ${track.artist}<br>Total listens: ${track.listeners}</p></div>`)
+                    if ((index + 1) % NumberPerRow === 0 || (index + 1) === trackArray.length) {
+                        // cardRow.push(`<div class="card">${albumImage}<h1>${album.artist}</h1><p class="title">${album.name}</p></div>`)
+                        newTrackArrayRow.push(`<div class="row">${newTrackArray}</div>`);
+                        newTrackArray.length = 0;
+                        console.log(newTrackArrayRow)
+                    }
+
+                })
+                console.log(newTrackArrayRow)
+
+                $(".artist-cards").html(`<div class="song-search-outer">${newTrackArrayRow}</div>`.replace(/,/g, ""));
+
+                // console.log(response.results.trackmatches);
             })
     } else if (searchType === "chart") {
-        apiUrl(searchType)
-            .then(function (response) {
-                // console.log(response.tracks.track);
-            })
+        getCharts(searchType)
     }
     dropdownValue = "";
 }
@@ -154,7 +167,7 @@ function getSongs(album, index) {
         let trackArray = [];
 
         arrayOfTracks.forEach(function (track) {
-            // console.log(track)
+            console.log(track)
             // console.log(track.name)
             // console.log(album.name)
             $(`#view-songs${index}`).on("click", function () {
@@ -173,4 +186,30 @@ function getSongs(album, index) {
             // }
         })
     })
+}
+
+function getCharts() {
+    console.log()
+    apiUrl("chart")
+        .then(function (response) {
+            let tracksArray = response.tracks.track;
+            let trackRow = [];
+            let trackTotal = [];
+            let NumberPerRow = 6;
+            console.log(response.tracks.track);
+            tracksArray.forEach(function (track, index) {
+                console.log(track);
+
+                trackRow.push(`<div class="track-card col-sm-12 col-md-12 col-lg-4"><li>${track.name}</li></div>`)
+                if ((index + 1) % NumberPerRow === 0 || (index + 1) === tracksArray.length) {
+                    // cardRow.push(`<div class="card">${albumImage}<h1>${album.artist}</h1><p class="title">${album.name}</p></div>`)
+                    trackTotal.push(`<div class="row">${trackRow}</div>`);
+
+                    trackRow.length = 0;
+
+                }
+            })
+            $(".artist-cards").html(`<div class="track-outer"><ul>${trackTotal}</ul></div>`.replace(/,/g, ""))
+        })
+
 }

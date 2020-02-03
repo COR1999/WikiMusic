@@ -5,6 +5,7 @@
 body{
     background-color: #ECE4B7;
     font-weight: 400;
+    
 }
 .btn{
     display: inline-block;
@@ -54,13 +55,9 @@ body{
     background-color: #FC9F5B;
     color: #ECE4B7;
 }
-.search-form h1{
-    font-weight: 600;
-    color: #FC9F5B;
-}
 
 .dropdown{
-    width:100px;
+    width:200px;
     display: inline-block;
     background-color: #ECE4B7;
     transition: all .5s ease;
@@ -68,28 +65,30 @@ body{
     font-size: 14px;
     height: 100%;
     text-align: center;
-    color: #FC9F5B;
-    text-align: center;
-    margin-top: 10px;
     border: 1px solid #7DCFB6;
-    margin-left: 10px;
 }
 
 .dropdown .select {
-    width:100px;
+    width:200px;
     cursor: pointer;
     display: block;
-    padding: 10px;
     text-align: center;
+    
 }
 .option-menu{
     text-align: center;
-    width:100px;
+    width:75px;
     min-width: 0;
     /* background-color: #FC9F5B; */
 
 }
-select{
+.dropdown select{
+    margin: 5px;
+}
+.dropdown input{
+    margin: 5px;
+}
+select, input{
     background-color: #ECE4B7;
 }
 
@@ -265,17 +264,18 @@ a {
 }
 
 
-.list-songs{
+/* .list-songs{
     list-style: decimal;
     list-style-position: inside;
     margin: auto;
-    /* width: 80%; */
-}
+    /* width: 80%; 
+}*/
+
 /**/
 .album-songs img{
     width: auto;
     height: auto;
-    padding: 10px;
+    padding: 15px;
 }
 .album-songs{
     text-align: center;
@@ -283,18 +283,61 @@ a {
 
 }
 
-.album-songs ul {
+.list-songs {
+    position: relative;
+    /* float: left; */
+    -webkit-column-count: auto;
+    -moz-column-count: auto;
+    column-count: 4;
+    text-align: center;
+    padding: 10px;
+}
+
+.list-songs > * {
+    /* border: 1px solid #FC9F5B; */
+
+    /* display: inline; */
+    padding: 20px;
+}
+.list-songs > * {
     display: inline-flex;
     flex-wrap: wrap;
-}
-
-.album-songs li{
     padding: 10px;
-    width: 150px;
-    height: auto;
+    list-style-type: disc;
+}
+.list-songs > *:after {
+    content: '';
 }
 
-
+@media (max-width: 768px) {
+    .list-songs{
+        font-size: 16px;
+    }
+}
 
 
 /*Test*/
+.songs-search{
+    /* float: left; */
+    margin: auto;
+    text-align: center;
+    
+}
+.songs-search > h4{
+    font-size: 20px;
+}
+
+.song-search-outer{
+    text-align: center;
+    margin: auto;
+}
+
+.track-card{
+    text-align: center;
+}
+.track-outer ul{
+    list-style: decimal-leading-zero;
+}
+.track-outer li{
+    font-size: 18px;
+}
