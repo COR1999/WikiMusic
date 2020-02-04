@@ -13,7 +13,7 @@ $(document).ready(function () {
     });
 
     let chart = document.getElementById("chart");
-    chart.addEventListener("click", function () { getCharts() })
+    // chart.addEventListener("click", function () { getCharts() })
 
     $('#myInput').keydown(function (event) {
         if (event.keyCode == '13') {
@@ -252,37 +252,48 @@ function chartRows(obj) {
         let playCount = (getTableElement(numberWithCommas(track.playcount)));
         // console.log(newTrack)
         // console.log(track.image[1]["#text"])
-        str = newIndex + trackName + artistName + playCount
+        // str = newIndex + trackName + artistName + playCount
         dataRow.push(newIndex)
         dataRow.push(trackName);
         dataRow.push(artistName);
         dataRow.push(playCount);
         // console.log(str)
-        
-        tableRows.push(`<tr>${str}</tr>`);
-        // tableRows.push(`<tr>${dataRow}</tr>`);
+
+        // tableRows.push(`<tr>${str}</tr>`);
+        tableRows.push(`<tr>${dataRow.join("")}</tr>`);
 
     });
     // console.log(tableRows)
-    return tableRows;
+    return tableRows.join("");
+    // let s = [];
+    // s.push("<tr>sam</tr>")
+    // s.push("<tr>bob</tr>")
+    // return s.join("")
 }
+
 function getCharts() {
     // console.log()
     apiUrl("chart")
         .then(function (response) {
-
             // let objParsed = JSON.parse(response)
             let tracksArray = response.tracks.track;
             // console.log(objParsed)
             // console.log(tracksArray)
-            console.log(typeof (tracksArray))
+            // console.log(typeof (tracksArray))
+            console.log(tracksArray)
+
             // chartHeaders(tracksArray)
             // chartRows(tracksArray)
-            let table = `<table>${chartHeaders(tracksArray)}${chartRows(tracksArray)}</table>`;
+            // console.log(typeof (chartRows(tracksArray)))
+            let rows = chartRows(tracksArray);
+            let table = `<table>${chartHeaders(tracksArray)}${rows}</table>`;
+            console.log(rows)
+
+            // let table = `<table>frank</table>`;
 
             // $(".top-charts").html(`<div class="track-outer"><ul>${trackTotal}</ul></div>`.replace(/,/g, ""))
             $(".top-charts").html(table)
-
+            // console.log(table)
         })
 
 }
