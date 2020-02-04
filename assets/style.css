@@ -155,7 +155,7 @@ select, input{
 }
 .navbar button:hover{
     /* background-color: #ECE4B7; */
-    color: #7DCFB6;
+    color: black;
 }
 .navbar button{
     color: #ECE4B7;
@@ -181,6 +181,14 @@ select, input{
     background-repeat: no-repeat;
     width: auto;
     height: 750px;
+}
+.charts-image{
+    background-image: url("../assets/images/billboard.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 85%;
+    height: 750px;
+    margin: auto;
 }
 
 
@@ -334,6 +342,13 @@ a {
 
 .track-card{
     text-align: center;
+}
+.track-outer{
+    margin: auto;
+    width: 85%;
+    padding-top: 15px;
+
+
 }
 .track-outer ul{
     list-style: decimal-leading-zero;
