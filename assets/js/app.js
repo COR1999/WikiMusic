@@ -8,13 +8,13 @@ let submit = document.getElementById('search'),
 $(document).ready(function () {
     $(function () {
         if ($("body").is(".chart")) {
-
             getCharts();
         }
     });
 
     let chart = document.getElementById("chart");
     chart.addEventListener("click", function () { getCharts() })
+
     $('#myInput').keydown(function (event) {
         if (event.keyCode == '13') {
             $("#search").click();
@@ -23,9 +23,9 @@ $(document).ready(function () {
             //do nothing :)
         }
     });
-    // submit.addEventListener("click", function () {
-    //     GetSelectedValue();
-    // });
+    submit.addEventListener("click", function () {
+        GetSelectedValue();
+    });
 
 })
 
@@ -231,9 +231,11 @@ function chartHeaders() {
     return `<thead><tr>${tableHeader}</tr></thead>`;
 }
 function chartRows(obj) {
+
     let tableRows = [];
     tableRowStr = "";
     obj.forEach(function (track, index) {
+
         let str = "";
         let dataRow = [];
         // let newTrack = track.replace(/,/g, "")
@@ -256,12 +258,7 @@ function chartRows(obj) {
         dataRow.push(artistName);
         dataRow.push(playCount);
         // console.log(str)
-        // if ((index + 1) % NumberPerRow === 0 || (index + 1) === tracksArray.length) {
-        //     // cardRow.push(`<div class="card">${albumImage}<h1>${album.artist}</h1><p class="title">${album.name}</p></div>`)
-        //     trackTotal.push(`<div class="row">${trackRow}</div>`);
-        //     trackRow.length = 0;
-        // }
-        // tableRowStr = "".concat(`<tr>${str}</tr>`)
+        
         tableRows.push(`<tr>${str}</tr>`);
         // tableRows.push(`<tr>${dataRow}</tr>`);
 
@@ -273,6 +270,7 @@ function getCharts() {
     // console.log()
     apiUrl("chart")
         .then(function (response) {
+
             // let objParsed = JSON.parse(response)
             let tracksArray = response.tracks.track;
             // console.log(objParsed)
