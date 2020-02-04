@@ -178,7 +178,7 @@ function getSongs(album, index) {
         let trackArray = [];
 
         arrayOfTracks.forEach(function (track) {
-            console.log(track)
+            // console.log(track)
             // console.log(track.name)
             // console.log(album.name)
             $(`#view-songs${index}`).on("click", function () {
@@ -206,70 +206,80 @@ function getTableElement(el, value) {
     if (el) {
         text = el;
     }
-    console.log(el)
+    // console.log(el)
     // console.log(text)
     // console.log(value)
-    return `<td>${text}</td>`;
+    let str = `<td>${text}</td>`
+    return str
 }
 function chartHeaders() {
+    let tableHeader = ""
     var tableHeaders = [];
-    tableHeaders.push(`<td>Number</td>`)
-    tableHeaders.push(`<td>Song Name</td>`);
-    tableHeaders.push(`<td>Artist Name</td>`);
-    tableHeaders.push(`<td>Playcount</td>`);
+    let tableNumber = "<td>Number</td>",
+        tableSong = "<td>Song Name</td>",
+        tableArtist = "<td>Artist Name</td>",
+        tablePlaycount = "<td>Playcount</td>";
+
+
+    tableHeader = tableNumber + tableSong + tableArtist + tablePlaycount
+    // tableHeaders.push(`<td>Number</td>`)
+    // tableHeaders.push(`<td>Song Name</td>`);
+    // tableHeaders.push(`<td>Artist Name</td>`);
+    // tableHeaders.push(`<td>Playcount</td>`);
     // tableHeaders.push(`<td>Description</td>`);
 
-    return `<thead><tr>${tableHeaders}</tr></thead>`;
+    return `<thead><tr>${tableHeader}</tr></thead>`;
 }
 function chartRows(obj) {
-    var tableRows = [];
+    let tableRows = [];
+    tableRowStr = "";
     obj.forEach(function (track, index) {
+        let str = "";
         let dataRow = [];
         // let newTrack = track.replace(/,/g, "")
         // console.log(track);
         // let newTrack = (track.replace(/,/g, ''))
-        let newIndex = getTableElement(index + 1);
-        let trackName = getTableElement(track.name);
-        let artistName = getTableElement(track.artist.name);
-        let playCount = getTableElement(numberWithCommas(track.playcount));
+        // let test = Object.keys(track.name).map(function (key) {
+        //     return [Number(key), obj[key]];
+        // });
+        // console.log(typeof (test))
+
+        let newIndex = (getTableElement(index + 1));
+        let trackName = (getTableElement(track.name));
+        let artistName = (getTableElement(track.artist.name));
+        let playCount = (getTableElement(numberWithCommas(track.playcount)));
         // console.log(newTrack)
         // console.log(track.image[1]["#text"])
+        str = newIndex + trackName + artistName + playCount
         dataRow.push(newIndex)
         dataRow.push(trackName);
         dataRow.push(artistName);
         dataRow.push(playCount);
-
+        // console.log(str)
         // if ((index + 1) % NumberPerRow === 0 || (index + 1) === tracksArray.length) {
         //     // cardRow.push(`<div class="card">${albumImage}<h1>${album.artist}</h1><p class="title">${album.name}</p></div>`)
         //     trackTotal.push(`<div class="row">${trackRow}</div>`);
         //     trackRow.length = 0;
         // }
-        tableRows.push(`<tr>${dataRow}</tr>`)
+        // tableRowStr = "".concat(`<tr>${str}</tr>`)
+        tableRows.push(`<tr>${str}</tr>`);
+        // tableRows.push(`<tr>${dataRow}</tr>`);
+
     });
+    // console.log(tableRows)
     return tableRows;
 }
 function getCharts() {
-    console.log()
+    // console.log()
     apiUrl("chart")
         .then(function (response) {
+            // let objParsed = JSON.parse(response)
             let tracksArray = response.tracks.track;
-            console.log(tracksArray)
-            // let trackRow = [];
-            // let trackTotal = [];
-            // let NumberPerRow = 6;
-            // // console.log(response.tracks.track);
-            // tracksArray.forEach(function (track, index) {
-            //     console.log(track);
-            //     // console.log(track.image[1]["#text"])
-            //     trackRow.push(`<div class="track-card col-sm-12 col-md-12 col-lg-4"><li>${track.name}: ${track.artist.name} Playcount:${track.playcount} </li></div>`)
-            //     if ((index + 1) % NumberPerRow === 0 || (index + 1) === tracksArray.length) {
-            //         // cardRow.push(`<div class="card">${albumImage}<h1>${album.artist}</h1><p class="title">${album.name}</p></div>`)
-            //         trackTotal.push(`<div class="row">${trackRow}</div>`);
-            //         trackRow.length = 0;
-            //     }
-            // })
-            chartHeaders(tracksArray)
-            chartRows(tracksArray)
+            // console.log(objParsed)
+            // console.log(tracksArray)
+            console.log(typeof (tracksArray))
+            // chartHeaders(tracksArray)
+            // chartRows(tracksArray)
             let table = `<table>${chartHeaders(tracksArray)}${chartRows(tracksArray)}</table>`;
 
             // $(".top-charts").html(`<div class="track-outer"><ul>${trackTotal}</ul></div>`.replace(/,/g, ""))
