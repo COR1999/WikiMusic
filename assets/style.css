@@ -5,7 +5,12 @@
 body{
     background-color: #ECE4B7;
     font-weight: 400;
+    margin: 0;
+    padding:0;
     
+}
+.container-fluid{
+    padding: 0;
 }
 .btn{
     display: inline-block;
@@ -182,14 +187,15 @@ select, input{
     width: auto;
     height: 750px;
 }
-.charts-image{
-    background-image: url("../assets/images/billboard.jpg");
-    background-position: center;
+/* .charts-image{
+    background-image: url("images/calming-lake-orignal.jpeg");
+    background-position: top;
     background-repeat: no-repeat;
-    width: 85%;
-    height: 750px;
+    background-size: auto;
+    width: 100%;
+    height: fit-content;
     margin: auto;
-}
+} */
 
 
 
@@ -355,4 +361,46 @@ a {
 }
 .track-outer li{
     font-size: 18px;
+}
+
+.top-charts table{
+    margin: auto;
+    text-align: center;
+    margin-top: 15px;
+    background-color: rgba(255, 255, 255, 0.247);
+}
+.top-charts td{
+    width: 250px;
+    font-weight: 800;
+    font-size: 14px;
+    color: black;
+    
+}
+.top-charts td{
+
+
+}
+/* .chart-info{
+    background-image: url("images/calming-guaitar.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: auto;
+    height: 600px;
+} */
+.chart-info h2{
+    margin: auto;
+    text-align: center;
+}
+#top-charts table{
+    margin: auto;
+    text-align: center;
+    margin-top: 15px;
+    background-color: rgba(255, 255, 255, 0.247);
+}
+#top-charts td{
+    width: 250px;
+    font-weight: 800;
+    font-size: 14px;
+    color: black;
+    
 }
