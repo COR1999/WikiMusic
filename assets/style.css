@@ -3,10 +3,11 @@
 
 
 body{
-    background-color: #ECE4B7;
+    /* background-color: #ECE4B7; */
     font-weight: 400;
     margin: 0;
     padding:0;
+    font-family: 'Roboto Mono', monospace;
     
 }
 .container-fluid{
@@ -31,17 +32,31 @@ body{
 
 
 /*Search Form*/
-.search-bar{
-    margin-left: auto;
-    margin-right: auto;
+.choose h2{
     text-align: center;
-    padding-top: 20px;
+    color: #ECE4B7;
+    padding: 15px;
+}
+.search-bar{
+    /* background-image: url("/assets/images/calming-guaitar.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 600px; */
+    display: block;
+    position: relative;
+    text-align: center;
+    /* padding-top: 30px; */
+    margin: auto;
+    top: 35%;
+    /* margin-right: -50%; */
 }
 .search-form input{
     width: 300px;
     color: #FC9F5B;
     text-align: center;
     margin-top: 10px;
+    padding: 10px;
 
 }
 
@@ -64,31 +79,31 @@ body{
 .dropdown{
     width:200px;
     display: inline-block;
-    background-color: #ECE4B7;
     transition: all .5s ease;
     position: relative;
     font-size: 14px;
     height: 100%;
     text-align: center;
-    border: 1px solid #7DCFB6;
+    margin: auto;
 }
 
 .dropdown .select {
     width:200px;
     cursor: pointer;
     display: block;
-    text-align: center;
-    
+
 }
 .option-menu{
     text-align: center;
     width:75px;
     min-width: 0;
     /* background-color: #FC9F5B; */
+    
 
 }
 .dropdown select{
     margin: 5px;
+    padding-left: 20px;
 }
 .dropdown input{
     margin: 5px;
@@ -108,6 +123,20 @@ select, input{
     margin-right: auto;
     text-align: center;
     padding: 10px;
+}
+#artist-card h1 > a{
+    font-size: 2.5rem;
+    border-bottom: 3px solid #FC9F5B;
+    color: #212529;
+}
+#artist-card h1 > a:hover{
+    font-size: 2.5rem;
+    /* border-bottom: #FC9F5B; */
+
+    text-decoration: none;
+    color: #FC9F5B;
+    /* border: none; */
+    border-bottom: 3px solid #FC9F5B;
 }
 
 #artist-card h2{
@@ -134,7 +163,7 @@ select, input{
 .navbar-light .navbar-brand,
 .navbar-light .navbar-nav .active>.nav-link,
 .navbar-light .navbar-nav .nav-link{
-    color: #ECE4B7;
+    color: #212529;
     padding: 10px;
     font-weight: 600;
 
@@ -163,9 +192,10 @@ select, input{
     color: black;
 }
 .navbar button{
-    color: #ECE4B7;
+    color: #212529;
     font-weight: 600;
-    border-color: #ECE4B7;
+    border-color: #212529;
+;
 }
 
 .form-control{
@@ -185,7 +215,7 @@ select, input{
     background-position: center;
     background-repeat: no-repeat;
     width: auto;
-    height: 750px;
+    height: 800px;
 }
 /* .charts-image{
     background-image: url("images/calming-lake-orignal.jpeg");
@@ -209,8 +239,8 @@ select, input{
 
 
 /*Card*/
-artist-cards{
-
+.artist-cards{
+    padding: 15px;
 }
 .card {
     /* max-height: 300px;
@@ -362,25 +392,31 @@ a {
 .track-outer li{
     font-size: 18px;
 }
-
+.top-charts{
+    
+}
 .top-charts table{
     margin: auto;
     text-align: center;
     margin-top: 15px;
-    /* background-color: rgba(255, 255, 255, 0.247); */
-    border: #212529 1px solid;
+    background-color: rgba(255, 255, 255, 0.347);
+    /* border: #212529 1px solid; */
+    height: 500px;
+    /* background-color: #FC9F5B; */
+    color: #212529;
 }
 .top-charts td{
     width: 250px;
-    font-weight: 800;
-    font-size: 14px;
-    color: black;
+    font-weight: 600;
+    font-size: 20px;
+    /* color: black; */
+
     
 }
-.top-charts td{
-
-
+.top-charts th{
+    font-size: 24px;
 }
+
 /* .chart-info{
     background-image: url("images/calming-guaitar.jpg");
     background-position: center;
@@ -388,7 +424,40 @@ a {
     background-size: auto;
     height: 600px;
 } */
+.charts-image{
+    background-image: url("images/calming-lake-orignal.jpeg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: auto;
+    height: 800px;
+}
+.charts-image h2{
+    font-size: 30px;
+    font-weight: 600;
+}
+.charts-image table{
+    background-color: rgba(255, 255, 255, 0.347);
+}
 .chart-info h2{
     margin: auto;
     text-align: center;
+}
+
+.page-button{
+    background-color: #7DCFB6;
+    height: 30px;
+    width: 30px;
+    margin: 15px;
+    padding-right: 5px;
+}
+.page-button:hover{
+    background-color: #FC9F5B;
+}
+.page-button::visited{
+    background-color: #ECE4B7;
+}
+#buttons{
+    margin: auto;
+    text-align: center;
+    /* padding: 10px; */
 }

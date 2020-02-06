@@ -9,6 +9,7 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
 		integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="assets/style.css" type="text/css" />
 	<title>Website Name</title>
 </head>
@@ -38,39 +39,41 @@
 	</nav>
 	<section>
 		<div class="hero-image">
+			<div class="search-bar">
+				<div class="choose">
+					<h2>Please Select a item to Search by</h2>
+				</div>
+				<div class="dropdown">
+					<select id="option-menu">
+						<option value="None" selected>-- Select --</option>
+						<option value="album">Album / Artist</option>
+						<option value="song">Song</option>
+						<!-- <option value="chart">Chart</option> -->
+					</select>
+
+				</div>
+				<!-- <div class="chart-button">
+					<button class="btn" type="button" id="chart">Charts</button>
+				</div> -->
+				<div class="search-form">
+					<input class="form-control ml-auto mr-auto" type="search" id="myInput">
+
+					<br>
+					<button class="btn" type="button" id="search"><i class="fa fa-search"></i></button>
+				</div>
+			</div>
+
 		</div>
 	</section>
 
 	<section class="container-fluid">
-
-		<div class="search-bar">
-			<span class="choose">Search by:</span>
-			<div class="dropdown">
-				<select id="option-menu">
-					<option value="None" selected>-- Select --</option>
-					<option value="album">Album / Artist</option>
-					<option value="song">Song</option>
-					<!-- <option value="chart">Chart</option> -->
-					<input type="button" value="Chart" id="chart">
-				</select>
-
-			</div>
-			<!-- <div class="chart-button">
-				<button class="btn" type="button" id="chart">Charts</button>
-			</div> -->
-			<div class="search-form">
-				<input class="form-control ml-auto mr-auto" type="search" id="myInput">
-
-				<br>
-				<button class="btn" type="button" id="search"><i class="fa fa-search"></i></button>
-			</div>
-		</div>
 		<div class="container artist-cards">
 			<div id="artist-card">
-				<div id="artist-list">
+				<h1>Be sure to check out are top 100 page <a href="/chart.html">here</a></h1>
+				<!-- <div id="artist-list">
 				</div>
 				<div id="album-list"></div>
-				<div id="track-list"></div>
+				<div id="track-list"></div> -->
 				<!-- <div id="artist-playNow">
 				</div> -->
 			</div>
