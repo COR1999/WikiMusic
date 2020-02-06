@@ -6,11 +6,13 @@ let submit = document.getElementById('search'),
     myInput = document.getElementById("myInput");
 let objJson;
 
-
 $(document).ready(function () {
+    getCharts()
     $(function () {
         if ($("body").is(".chart")) {
-            getCharts();
+            getCharts()
+            // buildTable(rows)
+            // console.log(getCharts())
         }
     });
     $(function () {
@@ -143,7 +145,7 @@ function apiUrl(searchType, input) {
         case "chart":
             searchBy = "chart.gettoptracks";
             input = "";
-            limit = "100"
+            limit = "125"
 
             break;
         default:
@@ -249,34 +251,39 @@ function chartRows(obj) {
     obj.forEach(function (track, index) {
 
         let dataRow = [];
-        // let newTrack = track.replace(/,/g, "")
-        // console.log(track);
-        // let newTrack = (track.replace(/,/g, ''))
-        // let test = Object.keys(track.name).map(function (key) {
-        //     return [Number(key), obj[key]];
-        // });
-        // console.log(typeof (test))
+
         let newIndex = (getTableElement(index + 1));
         let trackName = (getTableElement(track.name));
         let artistName = (getTableElement(track.artist.name));
         let playCount = (getTableElement(numberWithCommas(track.playcount)));
-        // console.log(newTrack)
-        // console.log(track.image[1]["#text"])
         // str = newIndex + trackName + artistName + playCount
         dataRow.push(newIndex)
         dataRow.push(trackName);
         dataRow.push(artistName);
         dataRow.push(playCount);
-        // console.log(str)
-        // console.log(track)
-        // tableRows.push(`<tr>${str}</tr>`);
 
+        // tableRows.push(`<tr>${str}</tr>`);
 
         tableRows.push(`<tr>${dataRow.join("")}</tr>`);
 
     });
-    return tableRows.join("");
 
+    let setOfPages = [];
+    // pageButtons(pageSize)
+    //     .then(function (l) {
+    //         console.log(l)
+    //     })
+    // console.log(tableRows.length)
+    let pageSize = 10;
+    let totalPages = Math.ceil(tableRows.length / pageSize)
+
+    while (setOfPages.length < totalPages) {
+        setOfPages.push(tableRows.splice(0, pageSize))
+    }
+    // console.log(setOfPages)
+    console.log(setOfPages)
+    // return tableRows.join("");
+    return setOfPages
     // console.log(paginate(tableRows))
     // if (tableRows.length === paginate(tableRows)) {
     //     console.log(this)
@@ -312,31 +319,40 @@ function chartRows(obj) {
     // });
     // return page[finalPage].join("")
 
-
-
 }
 
 function getCharts() {
+    let rows;
     // console.log()
     apiUrl("chart")
         .then(function (response) {
-
             // let objParsed = JSON.parse(response)
             let tracksArray = response.tracks.track;
-            // console.log(objParsed)
-            // console.log(tracksArray)
-            // console.log(typeof (tracksArray))
-            // console.log(tracksArray)
-
-            // chartHeaders(tracksArray)
-            // chartRows(tracksArray)
-            // console.log(typeof (chartRows(tracksArray)))
-            let rows = chartRows(tracksArray);
-
-            let table = `<table>${chartHeaders(tracksArray)}${rows}</table>`;
-
-            $(".top-charts").html(table)
+            rows = chartRows(tracksArray);
+            // buildTable(rows)
+            // let buttonClicked = pageButtons(rows.length)
+            // console.log(buttonClicked)
+            // console.log(rows.length)
+            pageButtons(rows.length, rows)
+            buildTable(rows, 1)
+            console.log(rows)
+            // buildTable(rows)
+            // console.log(printRow)
+            // let table = `<table>${chartHeaders()}${rows}</table>`
+            // console.log(rows)
+            // $(".top-charts").html(table)
         })
+
+}
+
+function buildTable(rows, page) {
+    let header = chartHeaders()
+    page = page - 1;
+    // console.log(page)
+    pageSize = 10;
+    let table = `<table>${header}${rows[page].join("")}</table > `
+    $(".top-charts").html(table)
+    // console.log(page)
 
 }
 
@@ -354,6 +370,25 @@ function numberWithCommas(num) {
     numParts[0] = numParts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     return numParts.join(".");
 }
+
+function pageButtons(pages, rows) {
+    rows = rows;
+    let value;
+    let wrapper = document.getElementById("buttons")
+    wrapper.innerHTML = ""
+    for (var page = 1; page <= pages; page++) {
+        wrapper.innerHTML += `<button value="${page}" class="page btn" > ${page}</button > `
+    }
+
+    $(".page").on("click", function () {
+        $(".top-charts").empty()
+        value = $(this).val()
+        // console.log(value)
+        buildTable(rows, value)
+        console.log(rows)
+        // console.log(value)
+    })
+};
 
 
 
@@ -478,7 +513,7 @@ function paginate(totalItems) {
 //         // for (let i = (page - 1) * itemsPerPage; i < (page * itemsPerPage); i++) {
 //         //write to document
 //         // console.log(i)
-//         topCharts.innerHTML += `<table>${obj.setOfPages[currentPage].join("")}</table>`;
+//         topCharts.innerHTML += `< table > ${ obj.setOfPages[currentPage].join("") }</table > `;
 //         // }
 //         pageSpan.innerHTML = page;
 

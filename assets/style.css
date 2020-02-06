@@ -367,7 +367,8 @@ a {
     margin: auto;
     text-align: center;
     margin-top: 15px;
-    background-color: rgba(255, 255, 255, 0.247);
+    /* background-color: rgba(255, 255, 255, 0.247); */
+    border: #212529 1px solid;
 }
 .top-charts td{
     width: 250px;
@@ -390,17 +391,4 @@ a {
 .chart-info h2{
     margin: auto;
     text-align: center;
-}
-#top-charts table{
-    margin: auto;
-    text-align: center;
-    margin-top: 15px;
-    background-color: rgba(255, 255, 255, 0.247);
-}
-#top-charts td{
-    width: 250px;
-    font-weight: 800;
-    font-size: 14px;
-    color: black;
-    
 }
