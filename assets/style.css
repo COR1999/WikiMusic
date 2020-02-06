@@ -211,7 +211,7 @@ select, input{
 
 /*Hero image*/
 .hero-image{
-    background-image: url("../assets/images/headphones-guy.jpeg");
+    background-image: url("images/headphones-guy.jpeg");
     background-position: center;
     background-repeat: no-repeat;
     width: auto;
