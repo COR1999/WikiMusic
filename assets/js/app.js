@@ -14,11 +14,12 @@ $(document).ready(function () {
             // console.log(getCharts())
         }
     });
-    $(function () {
+    window.onload = $(function () {
         if ($("body").is(".index")) {
             submit.addEventListener("click", function () {
                 GetSelectedValue();
             });
+            $(".artist-cards").html(`<h1>Be sure to check out are top 100 page <a href="/chart.html" id="here-Link">here</a></h1>`)
         }
     })
 
@@ -65,6 +66,7 @@ function searchTheAPI(result) {
                 // console.log(response)
                 let albumArray = response.results.albummatches.album;
                 // let newAlbumArray = [];
+
                 let rows = [];
                 let cardRow = [];
                 let NumberPerRow = 3;
@@ -92,6 +94,8 @@ function searchTheAPI(result) {
                 // $(".artist-cards").html(`${rows.join("")}`.replace(/,/g, ""))
                 $(".artist-cards").html(`${rows.join("")}`)
 
+
+
             })
     } else if (searchType === "song") {
         apiUrl(searchType, input)
@@ -111,7 +115,6 @@ function searchTheAPI(result) {
                     }
 
                 })
-                console.log(newTrackArrayRow)
 
                 // $(".artist-cards").html(`<div class="song-search-outer">${newTrackArrayRow}</div>`.replace(/,/g, ""));
                 $(".artist-cards").html(`<div class="song-search-outer">${newTrackArrayRow.join("")}</div>`);
@@ -172,6 +175,7 @@ function getSongs(album, index) {
         "method": "GET",
     }).then(function (data) {
         let arrayOfTracks = data.album.tracks.track;
+
         // console.log(data.album.tracks.track)
         let trackArray = [];
 
@@ -183,13 +187,13 @@ function getSongs(album, index) {
                 // console.log("index", index)
                 // console.log("track:", track.name)
 
-                trackArray.push(`<li>${track.name}<br>Duration: ${turnSec(track.duration)}</li>`)
+                trackArray.push(`<h4>${track.name}</h4><br><p>Duration: ${turnSec(track.duration)}</p>`)
 
                 // console.log(trackArray);
                 // trackOuter.push(`<div  id="${index}"><p>${track.name}</p></div>`)
                 // console.log(arrayOfTracks)
 
-                $(".artist-cards").html(`<div class="album-songs">${albumImage}<ul class="list-songs">${trackArray}</ul></div>`.replace(/,/g, ""))
+                $(".artist-cards").html(`<div class="album-songs">${albumImage}<div class="list-songs">${trackArray}</div></div>`.replace(/,/g, ""))
             })
             // if (track.name === arrayOfTracks) {
             //     console.log(track.name)
