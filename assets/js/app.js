@@ -7,7 +7,7 @@ let submit = document.getElementById('search'),
 let objJson;
 
 $(document).ready(function () {
-    $(function () {
+    window.onload = $(function () {
         if ($("body").is(".chart")) {
             getCharts()
             // buildTable(rows)
@@ -53,6 +53,7 @@ function GetSelectedValue() {
 
 
 function searchTheAPI(result) {
+
     let input;
     let searchType = result;
     console.log(searchType);
