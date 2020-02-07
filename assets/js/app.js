@@ -7,11 +7,13 @@ let submit = document.getElementById('search'),
 let objJson;
 
 $(document).ready(function () {
+
     window.onload = $(function () {
         if ($("body").is(".chart")) {
             getCharts()
             // buildTable(rows)
             // console.log(getCharts())
+            $("#chart-table").DataTable();
         }
     });
     window.onload = $(function () {
@@ -219,7 +221,7 @@ function chartHeaders() {
     let tableNumber = `<th scope="col">Number</th>`,
         tableSong = `<th scope="col">Song</th>`,
         tableArtist = `<th scope="col">Artist</th>`,
-        tablePlaycount = `<th scope="col">Play count</th>`;
+        tablePlaycount = `<th scope="col" >Play count</th>`;
 
 
     tableHeader = tableNumber + tableSong + tableArtist + tablePlaycount
@@ -243,7 +245,7 @@ function chartRows(obj) {
 
         // tableRows.push(`<tr>${str}</tr>`);
 
-        tableRows.push(`<tr>${dataRow.join("")}</tr>`);
+        tableRows.push(`<tr >${dataRow.join("")}</tr>`);
 
     });
 
@@ -294,7 +296,7 @@ function buildTable(rows, page) {
     page = page - 1;
     // console.log(page)
     pageSize = 10;
-    let table = `<table>${header}${rows[page].join("")}</table > `
+    let table = `<table id="chart-table">${header}${rows[page].join("")}</table > `
     $(".top-charts").html(table)
     // console.log(page)
 

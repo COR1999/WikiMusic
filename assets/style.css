@@ -7,8 +7,7 @@ body{
     font-weight: 400;
     margin: 0;
     padding:0;
-    font-family: 'Roboto Mono', monospace;
-    
+    font-family: 'Lato', sans-serif;    
 }
 .container-fluid{
     padding: 0;
@@ -124,7 +123,7 @@ select, input{
     text-align: center;
     padding: 10px;
 }
-#here-Link{
+#here-Link {
     font-size: 2.5rem;
     border-bottom: 3px solid #FC9F5B;
     color: #212529;
@@ -432,7 +431,7 @@ a {
     height: 800px;
 }
 .charts-image h2{
-    font-size: 30px;
+    font-size: 20px;
     font-weight: 600;
 }
 .charts-image table{
@@ -442,7 +441,15 @@ a {
     margin: auto;
     text-align: center;
 }
-
+/* @media only (max-device-width:700px){
+    #charts-image tr > *:nth-child(2) {
+        display: none;
+    }
+} */
+.chart-info tr > .hidecol
+{
+    display:none;
+}
 .page-button{
     background-color: #7DCFB6;
     height: 30px;
@@ -461,3 +468,4 @@ a {
     text-align: center;
     /* padding: 10px; */
 }
+
