@@ -214,7 +214,7 @@ select, input{
     background-position: center;
     background-repeat: no-repeat;
     width: auto;
-    height: 650px;
+    height: 700px;
 }
 /* .charts-image{
     background-image: url("images/calming-lake-orignal.jpeg");
@@ -231,9 +231,11 @@ select, input{
 /*Footer*/
 .page-footer a{
     color: #FC9F5B;
+    position: relative;
 }
 .page-footer{
     background-color:#7DCFB6;
+    height: 120px;
 }
 
 
@@ -405,7 +407,7 @@ a {
     color: #212529;
 }
 .top-charts td{
-    width: 250px;
+    /* width: 250px; */
     font-weight: 600;
     font-size: 20px;
     /* color: black; */
@@ -428,28 +430,104 @@ a {
     background-position: center;
     background-repeat: no-repeat;
     background-size: auto;
-    height: 800px;
+    /* position: relative; */
+    height: 700px;
+    /* width: 100%; */
 }
+.charts-waterfall{
+    background-image: url("images/waterfall.jpeg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: auto;
+    /* position: relative; */
+    height: 700px;
+}
+#chart-table > tbody > tr{
+    /* width: 70%; */
+    background-color: transparent;
+}
+table.dataTable tr.even td.sorting_1,
+table.dataTable tr.odd td.sorting_1 {
+    background-color: transparent;
+}
+.paginate_button{
+    cursor:pointer;
+    margin: 5px;
+    width: 80%;
+}
+#chart-table{
+    font-weight: 1000;
+    font-size: 22px;
+    /* margin: auto; */
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.4);
+    width: 80%;
+}
+.dataTables_length {
+    /* float: left; */
+    margin: auto;
+    color: #7DCFB6;
+    /* background-color: rgba(255, 255, 255, 0.347); */
+    font-weight: 600;
+    margin-left: 50px;
+
+}
+.dtr-details{
+    list-style: none;
+    text-align: center;
+    padding: 0;
+    margin: auto;
+}
+
+#chart-table_filter{
+    font-weight: 800;
+    text-align: center;
+    float: none;
+    font-size: 20px;
+}
+.dataTables_info {
+    clear: both;
+    float: left;
+    color: #7DCFB6;
+    background-color: rgba(0, 0, 0, 0.2)
+}
+.dataTables_paginate > a,
+.dataTables_paginate > span {
+    font-size: 24px;
+    color: #7DCFB6;
+    margin: 10px;
+    /* border: #FC9F5B 1px solid; */
+    /* margin-right: 50%; */
+}
+.dataTables_paginate > span > a:hover{
+    color: #212529;
+}
+#dataTables_paginate{
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 480px){
+    .dataTables_info {
+        float: none;
+        text-align: center;  
+        padding: 5px;      
+    }
+    .paginate_button{
+        cursor:pointer;
+        margin: auto;
+        float: none;
+        text-align: center;
+    }
+
+}
+
 .charts-image h2{
     font-size: 20px;
     font-weight: 600;
-}
-.charts-image table{
-    background-color: rgba(255, 255, 255, 0.347);
-}
-.chart-info h2{
-    margin: auto;
     text-align: center;
 }
-/* @media only (max-device-width:700px){
-    #charts-image tr > *:nth-child(2) {
-        display: none;
-    }
-} */
-.chart-info tr > .hidecol
-{
-    display:none;
-}
+
+
 .page-button{
     background-color: #7DCFB6;
     height: 30px;

@@ -5,15 +5,16 @@ let dropdownValue;
 let submit = document.getElementById('search'),
     myInput = document.getElementById("myInput");
 let objJson;
+// let chartData = apiUrl("chart")
 
 $(document).ready(function () {
 
     window.onload = $(function () {
         if ($("body").is(".chart")) {
             getCharts()
+
             // buildTable(rows)
             // console.log(getCharts())
-            $("#chart-table").DataTable();
         }
     });
     window.onload = $(function () {
@@ -255,51 +256,95 @@ function chartRows(obj) {
     //         console.log(l)
     //     })
     // console.log(tableRows.length)
-    let pageSize = 10;
-    let totalPages = Math.ceil(tableRows.length / pageSize)
-    while (setOfPages.length < totalPages) {
-        setOfPages.push(tableRows.splice(0, pageSize))
-    }
+    // let pageSize = 10;
+    // let totalPages = Math.ceil(tableRows.length / pageSize)
+    // while (setOfPages.length < totalPages) {
+    //     setOfPages.push(tableRows.splice(0, pageSize))
+    // }
     // console.log(setOfPages)
     console.log(setOfPages)
     // return tableRows.join("");
-    return setOfPages
+    // return setOfPages
 
+    return tableRows
 }
 
 function getCharts() {
     let rows;
+    let tableRows = [];
     // console.log()
     apiUrl("chart")
         .then(function (response) {
             // let objParsed = JSON.parse(response)
             let tracksArray = response.tracks.track;
             rows = chartRows(tracksArray);
-            // buildTable(rows)
-            // let buttonClicked = pageButtons(rows.length)
-            // console.log(buttonClicked)
-            // console.log(rows.length)
-            pageButtons(rows.length, rows)
-            buildTable(rows, 1)
-            console.log(rows)
-            // buildTable(rows)
-            // console.log(printRow)
-            // let table = `<table>${chartHeaders()}${rows}</table>`
+            // pageButtons(rows.length, rows)
+            // buildTable(rows, 1)
+            // let tableRows = [];
+            // let trackData = {
+            //     index: index,
+            //     name: name,
+
+            // }
+            console.log(tracksArray[0].name)
+            tracksArray.forEach(function (track, index) {
+                let dataRow = [];
+
+                let newIndex = index + 1
+                let trackName = track.name
+                let artistName = track.artist.name
+                let playCount = track.playcount
+                dataRow.push(newIndex)
+                dataRow.push(trackName);
+                dataRow.push(artistName);
+                dataRow.push(numberWithCommas(playCount));
+                console.log(dataRow)
+                tableRows.push(dataRow)
+            })
+            console.log(tableRows)
             // console.log(rows)
-            // $(".top-charts").html(table)
+            $("#chart-table").DataTable({
+                data: tableRows,
+                lengthChange: false,
+                responsive: true,
+                columns: [
+                    {
+                        title: "Number",
+                        width: "5%"
+                    },
+                    {
+                        title: "Name",
+                        width: "35%"
+                    },
+                    {
+                        title: "Artist",
+                        width: "25%",
+                    },
+                    {
+                        title: "Play Count",
+                        width: "20%",
+                    }
+
+                ]
+            })
+            // let buildTable = `<table id="chart-table">${chartHeaders()}${rows}</table> `
+            // $(".top-charts").html(buildTable)
+
+            // $(".top-charts").html(tracksArray)
+            // return tableRows
         })
 
 }
 
 function buildTable(rows, page) {
-    let header = chartHeaders()
-    page = page - 1;
+    // let header = chartHeaders()
+    // page = page - 1;
     // console.log(page)
-    pageSize = 10;
-    let table = `<table id="chart-table">${header}${rows[page].join("")}</table > `
-    $(".top-charts").html(table)
+    // pageSize = 10;
+    // let table = `<table id="chart-table">${header}${rows[page].join("")}</table> `
+    // $(".top-charts").html(table)
     // console.log(page)
-
+    // $("#chart-table").DataTable();
 }
 
 function turnSec(s) {
@@ -316,23 +361,29 @@ function numberWithCommas(num) {
     return numParts.join(".");
 }
 
-function pageButtons(pages, rows) {
-    rows = rows;
-    let value;
-    let wrapper = document.getElementById("buttons")
-    wrapper.innerHTML = ""
-    for (var page = 1; page <= pages; page++) {
-        wrapper.innerHTML += `<button value="${page}" class="page-button" >${page}</button> `
-    }
-
-    $(".page-button").on("click", function () {
-        $(".top-charts").empty()
-        value = $(this).val()
-        // console.log(value)
-        buildTable(rows, value)
-        console.log(rows)
-        // console.log(value)
-    })
-};
-
+// function pageButtons(pages, rows) {
+//     rows = rows;
+//     let value;
+//     let wrapper = document.getElementById("buttons")
+//     wrapper.innerHTML = ""
+//     for (var page = 1; page <= pages; page++) {
+//         wrapper.innerHTML += `<button value="${page}" class="page-button" >${page}</button> `
+//     }
+//     $(".page-button").on("click", function () {
+//         $(".top-charts").empty()
+//         value = $(this).val()
+//         // console.log(value)
+//         buildTable(rows, value)
+//         console.log(rows)
+//         // console.log(value)
+//     })
+// };
+// class Chart {
+//     constructor(index, song, name, playcount) {
+//         this.index = index;
+//         this.song = song;
+//         this.name = name;
+//         this.playcount = playcount;
+//     }
+// }
 
