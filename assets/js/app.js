@@ -307,22 +307,29 @@ function getCharts() {
                 data: tableRows,
                 lengthChange: false,
                 responsive: true,
+                "autoWidth": false,
+                "columnDefs": [
+                    { "width": "5%", "targets": 0 },
+                    { "width": "5%", "targets": 1 },
+                    { "width": "5%", "targets": 2 },
+                    { "width": "5%", "targets": 3 }
+                ],
                 columns: [
                     {
                         title: "Number",
-                        width: "5%"
+                        // width: "5%"
                     },
                     {
                         title: "Name",
-                        width: "35%"
+                        // width: "5%"
                     },
                     {
                         title: "Artist",
-                        width: "25%",
+                        // width: "5%",
                     },
                     {
                         title: "Play Count",
-                        width: "20%",
+                        // width: "5%",
                     }
 
                 ]

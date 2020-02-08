@@ -232,10 +232,13 @@ select, input{
 .page-footer a{
     color: #FC9F5B;
     position: relative;
+
 }
 .page-footer{
     background-color:#7DCFB6;
-    height: 120px;
+    /* height: 120px; */
+    position: relative;
+    /* bottom: 0; */
 }
 
 
@@ -393,30 +396,6 @@ a {
 .track-outer li{
     font-size: 18px;
 }
-.top-charts{
-    
-}
-.top-charts table{
-    margin: auto;
-    text-align: center;
-    margin-top: 15px;
-    background-color: rgba(255, 255, 255, 0.347);
-    /* border: #212529 1px solid; */
-    height: 500px;
-    /* background-color: #FC9F5B; */
-    color: #212529;
-}
-.top-charts td{
-    /* width: 250px; */
-    font-weight: 600;
-    font-size: 20px;
-    /* color: black; */
-
-    
-}
-.top-charts th{
-    font-size: 24px;
-}
 
 /* .chart-info{
     background-image: url("images/calming-guaitar.jpg");
@@ -430,18 +409,23 @@ a {
     background-position: center;
     background-repeat: no-repeat;
     background-size: auto;
+    height: 800px;
     /* position: relative; */
-    height: 700px;
+    /* background-color: #ECE4B7; */
     /* width: 100%; */
 }
-.charts-waterfall{
+.charts-outer{
+    /* background-color: #ECE4B7; */
+    /* height: 900px; */
+}
+/* .charts-waterfall{
     background-image: url("images/waterfall.jpeg");
     background-position: center;
     background-repeat: no-repeat;
-    background-size: auto;
+    background-size: auto; */
     /* position: relative; */
-    height: 700px;
-}
+    /* height: 700px; */
+/* } */
 #chart-table > tbody > tr{
     /* width: 70%; */
     background-color: transparent;
@@ -457,12 +441,32 @@ table.dataTable tr.odd td.sorting_1 {
 }
 #chart-table{
     font-weight: 1000;
-    font-size: 22px;
+    font-size: 20px;
     /* margin: auto; */
     text-align: center;
     background-color: rgba(255, 255, 255, 0.4);
     width: 80%;
+    /* padding-bottom: 2.5rem; */
+    height: 70%;
+    margin-top: 10px;
+
+    /* width: 70%; */
+
 }
+#chart-table_wrapper{
+    /* background-image: url("images/calming-lake-orignal.jpeg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: auto; */
+    /* position: relative; */
+    /* height: 800px; */
+    /* width: 70%; */
+    height: 100%;
+    padding-top: 5px;
+
+}
+
+
 .dataTables_length {
     /* float: left; */
     margin: auto;
@@ -489,18 +493,27 @@ table.dataTable tr.odd td.sorting_1 {
     clear: both;
     float: left;
     color: #7DCFB6;
-    background-color: rgba(0, 0, 0, 0.2)
+    background-color: rgba(0, 0, 0, 0.2);
+    margin-left: 10px;
 }
 .dataTables_paginate > a,
 .dataTables_paginate > span {
+    font-weight: 800;
     font-size: 24px;
-    color: #7DCFB6;
+    color: #212529;
     margin: 10px;
     /* border: #FC9F5B 1px solid; */
     /* margin-right: 50%; */
 }
-.dataTables_paginate > span > a:hover{
-    color: #212529;
+.dataTables_paginate > span > a:hover,
+.dataTables_paginate > a:hover{
+    color: #7DCFB6;
+}
+.dataTables_paginate{
+    font-weight: 1000;
+    margin-right: 5px;
+    background-color: rgba(0, 0, 0, 0.2);
+
 }
 #dataTables_paginate{
     background-color: rgba(0, 0, 0, 0.2);
@@ -518,6 +531,43 @@ table.dataTable tr.odd td.sorting_1 {
         float: none;
         text-align: center;
     }
+    
+
+}
+@media (max-width: 650px){
+    #chart-table{
+        font-weight: 1000;
+        font-size: 16px;
+        /* margin: auto; */
+        width: 80%;
+        height: 70%;
+    }
+    .dataTables_paginate > a,
+    .dataTables_paginate > span,
+    .paginate_button  {
+    font-weight: 1000;
+    font-size: 20px;
+    color: #212529;
+    text-align: center;
+    /* border: #FC9F5B 1px solid; */
+    /* margin-right: 50%; */
+}
+.dataTables_info {
+    float: none;
+    text-align: center;
+    font-size: 18px;  
+    padding: 5px;      
+    /* background-color: rgba(98, 98, 226, 0.267); */
+    /* background-position: 50%;  */
+}
+.dataTables_paginate{
+    float: none;
+    text-align: center;
+    padding: 5px;  
+    /* background-color: rgba(98, 98, 226, 0.267); */
+    /* background-position: 50%;  */
+
+}
 
 }
 
