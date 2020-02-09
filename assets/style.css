@@ -8,7 +8,7 @@ body{
     margin: 0;
     padding:0;
     font-family: 'Lato', sans-serif;    
-    background-color: #ECE4B7;
+    background-color: #C0C0C0;
 
 }
 .container-fluid{
@@ -33,27 +33,34 @@ body{
 
 
 /*Search Form*/
-.choose h2{
+.choose {
     text-align: center;
-    color: #ECE4B7;
-    padding: 15px;
+    color: #E27D60;
+    padding: 20px;
+    opacity: 1.0;
 }
+
 .search-bar{
-    /* background-image: url("/assets/images/calming-guaitar.jpg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-position: center;
-    height: 600px; */
     display: block;
     position: relative;
     text-align: center;
-    /* padding-top: 30px; */
     margin: auto;
-    top: 35%;
-    /* margin-right: -50%; */
+    top: 52%;
+
+}
+@media (max-width: 600px){
+    .search-bar{
+        display: block;
+        position: relative;
+        text-align: center;
+        margin: auto;
+        top: 33%;
+    
+    }
 }
 .search-form input{
-    width: 300px;
+    width: auto;
+    /* max-width: 300px; */
     color: #FC9F5B;
     text-align: center;
     margin-top: 10px;
@@ -96,11 +103,9 @@ body{
 }
 .option-menu{
     text-align: center;
-    width:75px;
-    min-width: 0;
+    width:auto;
+    width: 50px;
     /* background-color: #FC9F5B; */
-    
-
 }
 .dropdown select{
     margin: 5px;
@@ -110,15 +115,20 @@ body{
     margin: 5px;
 }
 select, input{
-    background-color: #ECE4B7;
+    background-color: #E8A87C;
 }
 
 .option-menu:hover{
-    background-color: #FC9F5B;
+    background-color: #E8A87C;
 }
 
 
 /*Artist card*/
+.home-chart,
+.home-chart a{
+    text-align: center;
+    color: #E27D60;
+}
 #artist-card{
     margin-left: auto;
     margin-right: auto;
@@ -127,17 +137,17 @@ select, input{
 }
 #here-Link {
     font-size: 2.5rem;
-    border-bottom: 3px solid #FC9F5B;
-    color: #212529;
+    border-bottom: 3px solid #E27D60;
+    color: #E27D60;
 }
 #here-Link:hover{
     font-size: 2.5rem;
     /* border-bottom: #FC9F5B; */
 
     text-decoration: none;
-    color: #FC9F5B;
+    color: #E8A87C;
     /* border: none; */
-    border-bottom: 3px solid #FC9F5B;
+    border-bottom: 3px solid #E8A87C;
 }
 
 #artist-card h2{
@@ -159,36 +169,43 @@ select, input{
 /*Nav Bar*/
 
 .bg-navbar{
-    background-color: #FC9F5B;
+    background-color: #E8A87C;
 }
 .navbar-light .navbar-brand,
 .navbar-light .navbar-nav .active>.nav-link,
 .navbar-light .navbar-nav .nav-link{
-    color: #212529;
+    color: #C0C0C0;
     /* padding: 10px; */
     font-weight: 600;
+    font-size: 20px;
 
 
 }
 .navbar-collapse{
     text-align: center;
 }
+@media (max-width: 600px){
+    .navbar-brand{
+        margin: 0;
+    }
+}
 
 
 
 
 .navbar-light a:hover{
-    color: #FC9F5B;
+    color: #C0C0C0;
 
     /* background-color: #ECE4B7; */
 }
 .active{
     /* color: #ECE4B7; */
-    border-bottom: 2px solid #ECE4B7;
-    border-bottom-width: 2px;
+    border-bottom: 2px solid #C0C0C0;
+    border-bottom-width: 5px;
 }
 .active:hover{
     /* color: #7DCFB6; */
+    color: #212529;
 
 }
 .navbar button:hover{
@@ -203,9 +220,9 @@ select, input{
 }
 
 .form-control{
-    background-color: #ECE4B7;
+    background-color:gray;
     color: #FC9F5B;
-    border: 1px solid #7DCFB6;
+    border: 1px solid #FC9F5B;
 }
 
 .navbar-toggler{
@@ -221,64 +238,45 @@ select, input{
     width: auto;
     height: 700px;
 }
-/* .charts-image{
-    background-image: url("images/calming-lake-orignal.jpeg");
-    background-position: top;
-    background-repeat: no-repeat;
-    background-size: auto;
-    width: 100%;
-    height: fit-content;
-    margin: auto;
-} */
-
-
 
 /*Footer*/
 .page-footer a{
-    color: #FC9F5B;
+    color: #fffff0;
+    position: relative;
+
+}
+.page-footer a:hover{
+    color: #E27D60;
     position: relative;
 
 }
 .page-footer{
-    background-color:#7DCFB6;
-    /* height: 120px; */
+    background-color:gray;
     position: relative;
-    /* bottom: 0; */
 }
-
 
 /*Card*/
 .artist-cards{
     padding: 15px;
 }
 .card {
-    /* max-height: 300px;
-    max-width: 300px; */
-    /* width: 300px;
-    height: 300px; */
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    /* margin-left: 0.0%;
-    margin-right: 0.0%; */
     text-align: center;
     margin-top: 10px;
     margin-bottom: 10px;
-    background-color:#ECE4B7;
+    background-color: #557A95;
 }
-
 .title {
-    color: grey;
+    color: #E27D60;
     font-size: 18px;
 }
-
-
-a {
+.card a{
     text-decoration: none;
     font-size: 22px;
     color: black;
 }
 
 .card img{
-    /* width: 64px; */
     width: auto;
     height: auto;
     margin: auto;
@@ -287,44 +285,24 @@ a {
 }
 .card p{
     font-size: 16px;
-
 }
-
 .card h1{
     font-size: 18px;
 }
-
 .no-imagesizeing{
     max-width: 174px;
 }
 .viewAlbum-songs{
     margin: auto;
     margin-bottom: 25px;
-    background-color: #ECE4B7;
-    border: 1px solid #FC9F5B;
-    color: #FC9F5B;
+    background-color: #C0C0C0;
+    border: 1px solid gray;
+    color: gray;
     font-weight: 600;
     height: 40px;
 }
 
-
-
-
-
-#card-title{
-    width: 33%;
-    margin: 0;
-}
-
-
-/* .list-songs{
-    list-style: decimal;
-    list-style-position: inside;
-    margin: auto;
-    /* width: 80%; 
-}*/
-
-/**/
+/* View Album Songs*/
 .album-songs img{
     width: auto;
     height: auto;
@@ -338,77 +316,40 @@ a {
 
 .list-songs {
     position: relative;
-    /* float: left; */
-    -webkit-column-count: auto;
-    -moz-column-count: auto;
-    column-count: 4;
-    text-align: center;
-    padding: 10px;
-}
-
-.list-songs > * {
-    /* border: 1px solid #FC9F5B; */
-
-    /* display: inline; */
-    padding: 20px;
-}
-.list-songs > * {
-    display: inline-flex;
+    display: flex;
     flex-wrap: wrap;
-    padding: 10px;
-    list-style-type: disc;
 }
-.list-songs > *:after {
-    content: '';
+.track-name{
+    padding-top: 5px;
+    margin: auto;
 }
-
+.track-duration{
+    margin: auto;
+}
 @media (max-width: 768px) {
     .list-songs{
         font-size: 16px;
     }
 }
 
-
-/*Test*/
+/*Search By Songs */
 .songs-search{
-    /* float: left; */
     margin: auto;
     text-align: center;
+    
     
 }
 .songs-search > h4{
     font-size: 20px;
+    margin: auto;
 }
 
 .song-search-outer{
     text-align: center;
     margin: auto;
+    
 }
-
-.track-card{
-    text-align: center;
-}
-.track-outer{
-    margin: auto;
-    width: 85%;
-    padding-top: 15px;
-
-
-}
-.track-outer ul{
-    list-style: decimal-leading-zero;
-}
-.track-outer li{
-    font-size: 18px;
-}
-
-/* .chart-info{
-    background-image: url("images/calming-guaitar.jpg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: auto;
-    height: 600px;
-} */
+/*Top Charts table*/
 .charts-image{
     background-image: url("images/calming-lake-orignal.jpeg");
     background-position: center;
@@ -420,17 +361,9 @@ a {
     /* width: 100%; */
 }
 .charts-outer{
-    /* background-color: #ECE4B7; */
-    /* height: 900px; */
+    
+    color: #212529;
 }
-/* .charts-waterfall{
-    background-image: url("images/waterfall.jpeg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: auto; */
-    /* position: relative; */
-    /* height: 700px; */
-/* } */
 #chart-table > tbody > tr{
     /* width: 70%; */
     background-color: transparent;
@@ -447,15 +380,13 @@ table.dataTable tr.odd td.sorting_1 {
 #chart-table{
     font-weight: 1000;
     font-size: 20px;
-    /* margin: auto; */
+    margin: auto;
     text-align: center;
     background-color: rgba(255, 255, 255, 0.4);
-    width: 80%;
-    /* padding-bottom: 2.5rem; */
+    width: 70%;
     height: 70%;
     margin-top: 10px;
 
-    /* width: 70%; */
 
 }
 #chart-table_wrapper{
@@ -494,10 +425,16 @@ table.dataTable tr.odd td.sorting_1 {
     float: none;
     font-size: 20px;
 }
+#chart-table_filter input{
+    background-color: #C0C0C0;
+    color: #E27D60;
+    border: #E27D60 solid 1px;
+}
+
 .dataTables_info {
     clear: both;
     float: left;
-    color: #7DCFB6;
+    color: #E27D60;
     background-color: rgba(0, 0, 0, 0.2);
     margin-left: 10px;
 }
@@ -505,7 +442,7 @@ table.dataTable tr.odd td.sorting_1 {
 .dataTables_paginate > span {
     font-weight: 800;
     font-size: 24px;
-    color: #212529;
+    color: #E27D60;
     margin: 10px;
     /* border: #FC9F5B 1px solid; */
     /* margin-right: 50%; */
@@ -517,13 +454,9 @@ table.dataTable tr.odd td.sorting_1 {
 .dataTables_paginate{
     font-weight: 1000;
     margin-right: 5px;
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: rgba(0, 0, 0, 0.4);
 
 }
-#dataTables_paginate{
-    background-color: rgba(0, 0, 0, 0.2);
-}
-
 @media (max-width: 480px){
     .dataTables_info {
         float: none;
@@ -536,13 +469,11 @@ table.dataTable tr.odd td.sorting_1 {
         float: none;
         text-align: center;
     }
-    
-
 }
 @media (max-width: 650px){
     #chart-table{
         font-weight: 1000;
-        font-size: 16px;
+        font-size: 14px;
         /* margin: auto; */
         width: 80%;
         height: 70%;
@@ -550,29 +481,28 @@ table.dataTable tr.odd td.sorting_1 {
     .dataTables_paginate > a,
     .dataTables_paginate > span,
     .paginate_button  {
-    font-weight: 1000;
-    font-size: 20px;
-    color: #212529;
-    text-align: center;
-    /* border: #FC9F5B 1px solid; */
-    /* margin-right: 50%; */
-}
-.dataTables_info {
-    float: none;
-    text-align: center;
-    font-size: 18px;  
-    padding: 5px;      
-    /* background-color: rgba(98, 98, 226, 0.267); */
-    /* background-position: 50%;  */
-}
-.dataTables_paginate{
-    float: none;
-    text-align: center;
-    padding: 5px;  
-    /* background-color: rgba(98, 98, 226, 0.267); */
-    /* background-position: 50%;  */
-
-}
+        font-weight: 1000;
+        font-size: 20px;
+        color: #E8A87C;
+        text-align: center;
+        /* border: #FC9F5B 1px solid; */
+        /* margin-right: 50%; */
+    }
+    .dataTables_info {
+        float: none;
+        text-align: center;
+        font-size: 18px;  
+        padding: 5px;      
+        /* background-color: rgba(98, 98, 226, 0.267); */
+        /* background-position: 50%;  */
+    }
+    .dataTables_paginate{
+        float: none;
+        text-align: center;
+        padding: 5px;  
+        /* background-color: rgba(98, 98, 226, 0.267); */
+        /* background-position: 50%;  */
+    }
 
 }
 
@@ -602,3 +532,7 @@ table.dataTable tr.odd td.sorting_1 {
     /* padding: 10px; */
 }
 
+h4 {
+    font-size: 1.0rem !important;
+    font-style: italic;
+}

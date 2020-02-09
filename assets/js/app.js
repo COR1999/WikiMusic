@@ -22,7 +22,7 @@ $(document).ready(function () {
             submit.addEventListener("click", function () {
                 GetSelectedValue();
             });
-            $(".artist-cards").html(`<h1>Be sure to check out are top 100 page <a href="/chart.html" id="here-Link">here</a></h1>`)
+            $(".artist-cards").html(`<div class="home-chart"><h1>Be sure to check out are top 100 page <a href="/chart.html" id="here-Link">here</a></h1></div>`)
         }
     })
 
@@ -95,7 +95,7 @@ function searchTheAPI(result) {
                     getSongs(album, index);
                 })
                 // $(".artist-cards").html(`${rows.join("")}`.replace(/,/g, ""))
-                $(".artist-cards").html(`${rows.join("")}`)
+                $(".artist-cards").html(`<center><h2>Search Results</h2></center>${rows.join("")}`)
 
 
 
@@ -109,7 +109,7 @@ function searchTheAPI(result) {
                 let NumberPerRow = 4;
                 let newTrackArrayRow = [];
                 trackArray.forEach(function (track, index) {
-                    newTrackArray.push(`<div class="songs-search col-sm-6 col-md-4 col-lg-2"><h4>${track.name}</h4><p>Artist: ${track.artist}<br>Total listens: ${(numberWithCommas(track.listeners))}</p></div>`)
+                    newTrackArray.push(`<div class="card songs-search col-sm-6 col-md-3 col-lg-2"style="height:120px"><h4>${track.name}</h4><p>Artist: ${track.artist}<br>Total listens: ${(numberWithCommas(track.listeners))}</p></div>`)
                     if ((index + 1) % NumberPerRow === 0 || (index + 1) === trackArray.length) {
                         // cardRow.push(`<div class="card">${albumImage}<h1>${album.artist}</h1><p class="title">${album.name}</p></div>`)
                         newTrackArrayRow.push(`<div class="row">${newTrackArray.join("")}</div>`);
@@ -120,7 +120,7 @@ function searchTheAPI(result) {
                 })
 
                 // $(".artist-cards").html(`<div class="song-search-outer">${newTrackArrayRow}</div>`.replace(/,/g, ""));
-                $(".artist-cards").html(`<div class="song-search-outer">${newTrackArrayRow.join("")}</div>`);
+                $(".artist-cards").html(`<h2>Search Results</h2><div class="song-search-outer">${newTrackArrayRow.join("")}</div>`);
 
 
                 // console.log(response.results.trackmatches);
@@ -190,13 +190,13 @@ function getSongs(album, index) {
                 // console.log("index", index)
                 // console.log("track:", track.name)
 
-                trackArray.push(`<h4>${track.name}</h4><br><p>Duration: ${turnSec(track.duration)}</p>`)
+                trackArray.push(`<div class="card col-sm-6 col-md-4 col-lg-2" style="height:100px"><div class="track-name"><h4>${track.name}</h4></div><div class="track-duration"><p>Duration: ${turnSec(track.duration)}</p></div></div>`)
 
                 // console.log(trackArray);
                 // trackOuter.push(`<div  id="${index}"><p>${track.name}</p></div>`)
                 // console.log(arrayOfTracks)
 
-                $(".artist-cards").html(`<div class="album-songs">${albumImage}<div class="list-songs">${trackArray}</div></div>`.replace(/,/g, ""))
+                $(".artist-cards").html(`<div class="album-songs">${albumImage}<div class="list-songs">${trackArray}</div></<div>`.replace(/,/g, ""))
             })
             // if (track.name === arrayOfTracks) {
             //     console.log(track.name)
@@ -309,10 +309,10 @@ function getCharts() {
                 responsive: true,
                 "autoWidth": false,
                 "columnDefs": [
-                    { "width": "5%", "targets": 0 },
-                    { "width": "5%", "targets": 1 },
-                    { "width": "5%", "targets": 2 },
-                    { "width": "5%", "targets": 3 }
+                    { "width": "1%", "targets": 0 },
+                    { "width": "3%", "targets": 1 },
+                    { "width": "3%", "targets": 2 },
+                    { "width": "2%", "targets": 3 }
                 ],
                 columns: [
                     {

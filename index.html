@@ -43,26 +43,26 @@
 	</nav>
 	<section>
 		<div class="hero-image">
-			<div class="search-bar">
+			<div class="search-bar" style="background:#7f7f7f; background:rgba(0,0,0,0.5);
+			margin-left: 20%; margin-right: 20%">
 				<div class="choose">
 					<h2>Please Select a item to Search by</h2>
 				</div>
-				<div class="dropdown">
-					<select id="option-menu">
-						<option value="None" selected>-- Select --</option>
-						<option value="album">Album / Artist</option>
-						<option value="song">Song</option>
-						<!-- <option value="chart">Chart</option> -->
-					</select>
 
+				<div class="form-group">
+					<center>
+						<select class="form-control col-4" id="option-menu" name="option-menu"
+							style="max-width: 200px;">
+							<option value="album">Search Album / Artist</option>
+							<option value="song">Search Song</option>
+						</select>
+					</center>
 				</div>
 				<!-- <div class="chart-button">
 					<button class="btn" type="button" id="chart">Charts</button>
 				</div> -->
 				<div class="search-form">
 					<input class="form-control ml-auto mr-auto" type="search" id="myInput">
-
-					<br>
 					<button class="btn" type="button" id="search"><i class="fa fa-search"></i></button>
 				</div>
 			</div>
