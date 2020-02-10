@@ -45,7 +45,10 @@
 		<div class="hero-image">
 			<div class="search-bar">
 				<div class="choose">
-					<h2>Please Select a item to Search by</h2>
+
+					<label for="option-menu">
+						<h2>Please Select a item to Search by</h2>
+					</label>
 				</div>
 
 				<div class="form-group">
@@ -60,8 +63,10 @@
 					<button class="btn" type="button" id="chart">Charts</button>
 				</div> -->
 				<div class="search-form">
+					<span for="myInput" class="sr-only">Search input</span>
 					<input class="form-control ml-auto mr-auto" type="search" id="myInput">
-					<button class="btn" type="button" id="search"><i class="fa fa-search"></i></button>
+					<button class="btn" type="button" id="search"><i class="fa fa-search"></i><span
+							class="sr-only">Search Button</span></button>
 				</div>
 			</div>
 
@@ -89,6 +94,7 @@
 		<div class="container">
 			<!-- Social buttons -->
 			<ul class="list-unstyled list-inline text-center">
+				<!-- <center><h6>Socail Links</h6></center> -->
 				<li class="list-inline-item">
 					<a href="www.facebook.com" class="btn-floating btn-fb mx-1">
 						<i class="fab fa-facebook-f"> </i>
