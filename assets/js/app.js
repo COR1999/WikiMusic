@@ -109,7 +109,7 @@ function searchTheAPI(result) {
                 let NumberPerRow = 4;
                 let newTrackArrayRow = [];
                 trackArray.forEach(function (track, index) {
-                    newTrackArray.push(`<div class="card songs-search col-sm-6 col-md-3 col-lg-2"style="height:120px"><h4>${track.name}</h4><p>Artist: ${track.artist}<br>Total listens: ${(numberWithCommas(track.listeners))}</p></div>`)
+                    newTrackArray.push(`<div class="card songs-search col-sm-6 col-md-3 col-lg-2"><h4>${track.name}</h4><p>Artist: ${track.artist}<br>Total listens: ${(numberWithCommas(track.listeners))}</p></div>`)
                     if ((index + 1) % NumberPerRow === 0 || (index + 1) === trackArray.length) {
                         // cardRow.push(`<div class="card">${albumImage}<h1>${album.artist}</h1><p class="title">${album.name}</p></div>`)
                         newTrackArrayRow.push(`<div class="row">${newTrackArray.join("")}</div>`);
@@ -120,7 +120,7 @@ function searchTheAPI(result) {
                 })
 
                 // $(".artist-cards").html(`<div class="song-search-outer">${newTrackArrayRow}</div>`.replace(/,/g, ""));
-                $(".artist-cards").html(`<h2>Search Results</h2><div class="song-search-outer">${newTrackArrayRow.join("")}</div>`);
+                $(".artist-cards").html(`<div class="song-search-outer"><h2>Search Results</h2>${newTrackArrayRow.join("")}</div>`);
 
 
                 // console.log(response.results.trackmatches);
@@ -315,23 +315,10 @@ function getCharts() {
                     { "width": "2%", "targets": 3 }
                 ],
                 columns: [
-                    {
-                        title: "Number",
-                        // width: "5%"
-                    },
-                    {
-                        title: "Name",
-                        // width: "5%"
-                    },
-                    {
-                        title: "Artist",
-                        // width: "5%",
-                    },
-                    {
-                        title: "Play Count",
-                        // width: "5%",
-                    }
-
+                    { title: "Number" },
+                    { title: "Name" },
+                    { title: "Artist" },
+                    { title: "Play Count" }
                 ]
             })
             // let buildTable = `<table id="chart-table">${chartHeaders()}${rows}</table> `

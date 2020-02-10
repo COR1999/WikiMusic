@@ -11,29 +11,9 @@ body{
     background-color: #C0C0C0;
 
 }
-.container-fluid{
-    padding: 0;
-}
-.btn{
-    display: inline-block;
-    font-weight: 400;
-    color: #212529;
-    text-align: center;
-    vertical-align: middle;
-    -webkit-user-select: none;
-    user-select: none;
-    background-color: transparent;
-    border: 1px solid transparent;
-    padding: .375rem .75rem;
-    font-size: 1rem;
-    line-height: 1.5;
-    border-radius: .25rem;
-    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-}
-
 
 /*Search Form*/
-.choose {
+.choose h2{
     text-align: center;
     color: #E27D60;
     padding: 20px;
@@ -46,6 +26,10 @@ body{
     text-align: center;
     margin: auto;
     top: 52%;
+    background:#7f7f7f; 
+    background:rgba(0,0,0,0.4);
+    margin-left: 25%; 
+    margin-right: 25%;
 
 }
 @media (max-width: 600px){
@@ -75,12 +59,12 @@ body{
     border-radius: 30%;
     font-weight: 400;
     margin-bottom: 20px;
-    color: #FC9F5B;
-    border: 2px solid #FC9F5B;
+    color: #E27D60;
+    border: 2px solid #E27D60;
 }
 
 .search-form button:hover{
-    background-color: #FC9F5B;
+    background-color: #E27D60;
     color: #ECE4B7;
 }
 
@@ -105,159 +89,39 @@ body{
     text-align: center;
     width:auto;
     width: 50px;
-    /* background-color: #FC9F5B; */
-}
-.dropdown select{
-    margin: 5px;
-    /* padding-left: 20px; */
-}
-.dropdown input{
-    margin: 5px;
-}
-select, input{
-    background-color: #E8A87C;
+    max-width: 200px;
 }
 
-.option-menu:hover{
-    background-color: #E8A87C;
+.form-control{
+    background-color:#7f7f7f;
+    color: #C0C0C0;
+    border: 1px solid #E27D60;
+    font-weight: 600;
 }
 
-
-/*Artist card*/
+/*Click here to go to charts page styleing*/
 .home-chart,
 .home-chart a{
     text-align: center;
     color: #E27D60;
 }
-#artist-card{
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
-    padding: 10px;
-}
 #here-Link {
-    font-size: 2.5rem;
     border-bottom: 3px solid #E27D60;
     color: #E27D60;
 }
-#here-Link:hover{
-    font-size: 2.5rem;
-    /* border-bottom: #FC9F5B; */
 
+#here-Link:hover{
     text-decoration: none;
     color: #E8A87C;
     /* border: none; */
     border-bottom: 3px solid #E8A87C;
 }
-
-#artist-card h2{
-    font-size: 28px;
-    color: #FC9F5B;
-}
-
-
-#artist-songs a{
-    color: #874;
-    padding: 5px;
-}
-
-#artist-songs li{
-    list-style: none;
-}
-
-
-/*Nav Bar*/
-
-.bg-navbar{
-    background-color: #E8A87C;
-}
-.navbar-light .navbar-brand,
-.navbar-light .navbar-nav .active>.nav-link,
-.navbar-light .navbar-nav .nav-link{
-    color: #C0C0C0;
-    /* padding: 10px; */
-    font-weight: 600;
-    font-size: 20px;
-
-
-}
-.navbar-collapse{
-    text-align: center;
-}
-@media (max-width: 600px){
-    .navbar-brand{
-        margin: 0;
-    }
-}
-
-
-
-
-.navbar-light a:hover{
-    color: #C0C0C0;
-
-    /* background-color: #ECE4B7; */
-}
-.active{
-    /* color: #ECE4B7; */
-    border-bottom: 2px solid #C0C0C0;
-    border-bottom-width: 5px;
-}
-.active:hover{
-    /* color: #7DCFB6; */
-    color: #212529;
-
-}
-.navbar button:hover{
-    /* background-color: #ECE4B7; */
-    color: black;
-}
-.navbar button{
-    color: #212529;
-    font-weight: 600;
-    border-color: #212529;
-;
-}
-
-.form-control{
-    background-color:gray;
-    color: #FC9F5B;
-    border: 1px solid #FC9F5B;
-}
-
-.navbar-toggler{
-    margin-left: auto;
-    margin-right: auto;
-}
-
-/*Hero image*/
-.hero-image{
-    background-image: url("images/headphones-guy.jpeg");
-    background-position: center;
-    background-repeat: no-repeat;
-    width: auto;
-    height: 700px;
-}
-
-/*Footer*/
-.page-footer a{
-    color: #fffff0;
-    position: relative;
-
-}
-.page-footer a:hover{
-    color: #E27D60;
-    position: relative;
-
-}
-.page-footer{
-    background-color:gray;
-    position: relative;
-}
-
-/*Card*/
+/*Artist card*/
 .artist-cards{
-    padding: 15px;
+    text-align: center;
+    margin: auto;
+    color: #E27D60;    
+    padding: 10px;
 }
 .card {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -265,6 +129,7 @@ select, input{
     margin-top: 10px;
     margin-bottom: 10px;
     background-color: #557A95;
+    border: 2px solid #E27D60;
 }
 .title {
     color: #E27D60;
@@ -296,12 +161,11 @@ select, input{
     margin: auto;
     margin-bottom: 25px;
     background-color: #C0C0C0;
-    border: 1px solid gray;
+    border: 1px solid #E27D60;
     color: #E27D60;
     font-weight: 600;
     height: 40px;
 }
-
 /* View Album Songs*/
 .album-songs img{
     width: auto;
@@ -311,7 +175,6 @@ select, input{
 .album-songs{
     text-align: center;
     font-size: 18px;
-
 }
 
 .list-songs {
@@ -332,22 +195,93 @@ select, input{
     }
 }
 
+
+/*Nav Bar*/
+.bg-navbar{
+    background-color: #E8A87C;
+}
+.navbar-light .navbar-brand,
+.navbar-light .navbar-nav .active>.nav-link,
+.navbar-light .navbar-nav .nav-link{
+    color: #557A95;
+    /* padding: 10px; */
+    font-weight: 600;
+    font-size: 20px;
+}
+.navbar-collapse{
+    text-align: center;
+}
+.navbar-brand{
+    padding-top: 0;
+}
+@media (max-width: 600px){
+    .navbar-brand{
+        margin: 0;
+    }
+}
+.navbar-light .navbar-brand:focus, .navbar-light .navbar-brand:hover,
+.navbar-light .navbar-nav .nav-link:hover{
+    color: #7f7f7f;
+}
+
+.active{
+    border-bottom: 2px solid #557A95;
+    border-bottom-width: 5px;
+}
+.navbar-toggler{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/*Hero image*/
+.hero-image{
+    background-image: url("images/headphones-guy.jpeg");
+    background-position: center;
+    background-repeat: no-repeat;
+    width: auto;
+    height: 700px;
+}
+
+/*Footer*/
+.page-footer a{
+    color:#C0C0C0;
+    font-size: 20px;
+    position: relative;
+
+}
+.page-footer a:hover{
+    color: #E27D60;
+    position: relative;
+
+}
+.page-footer{
+    background-color:#7f7f7f;
+    position: relative;
+}
+
+
 /*Search By Songs */
 .songs-search{
     margin: auto;
     text-align: center;
-    
-    
+    height: 150px;
+    margin-bottom: 20px;
 }
+
 .songs-search > h4{
+    color: #C0C0C0;
+    font-weight: 600;
     font-size: 20px;
     margin: auto;
 }
-
+.song-search-outer p{
+    color: #E27D60;
+}
 .song-search-outer{
     text-align: center;
     margin: auto;
-    
+color: #E27D60;    
+padding: 10px;
 }
 /*Top Charts table*/
 .charts-image{
@@ -361,7 +295,7 @@ select, input{
     /* width: 100%; */
 }
 .charts-outer{
-    
+    padding: 0;
     color: #212529;
 }
 #chart-table > tbody > tr{
