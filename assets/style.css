@@ -206,7 +206,6 @@ body{
 .navbar-light .navbar-nav .active>.nav-link,
 .navbar-light .navbar-nav .nav-link{
     color: #557A95;
-    /* padding: 10px; */
     font-weight: 600;
     font-size: 20px;
 }
@@ -298,7 +297,6 @@ padding: 10px;
     color: #212529;
 }
 #chart-table > tbody > tr{
-    /* width: 70%; */
     background-color: transparent;
 }
 table.dataTable tr.even td.sorting_1,
@@ -367,8 +365,6 @@ table.dataTable tr.odd td.sorting_1 {
     font-size: 24px;
     color: #E27D60;
     margin: 10px;
-    /* border: #FC9F5B 1px solid; */
-    /* margin-right: 50%; */
 }
 .dataTables_paginate > span > a:hover,
 .dataTables_paginate > a:hover{
@@ -397,7 +393,6 @@ table.dataTable tr.odd td.sorting_1 {
     #chart-table{
         font-weight: 1000;
         font-size: 14px;
-        /* margin: auto; */
         width: 80%;
         height: 70%;
     }
@@ -408,8 +403,6 @@ table.dataTable tr.odd td.sorting_1 {
         font-size: 20px;
         color: #E8A87C;
         text-align: center;
-        /* border: #FC9F5B 1px solid; */
-        /* margin-right: 50%; */
     }
     .dataTables_info {
         float: none;
