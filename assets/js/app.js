@@ -118,7 +118,7 @@ function searchTheAPI(result) {
         apiUrl(searchType, input)
             .then(function (response) {
                 $(".artist-cards").fadeOut(1500);
-                $(".list-songs").fadeOut(1500)
+                $(".list-songs-div").fadeOut(1500)
 
                 let trackArray = response.results.trackmatches.track;
                 console.log(response)
