@@ -134,7 +134,7 @@ body{
     border: 2px solid #E27D60;
 }
 .title {
-    color: #E27D60;
+    color: #E8A87C;
     font-size: 18px;
 }
 .card a{
@@ -258,6 +258,11 @@ body{
 .page-footer{
     background-color:#7f7f7f;
     position: relative;
+}
+.footer-text{
+    padding: 5px;
+    color: #C0C0C0;
+
 }
 
 
@@ -414,6 +419,9 @@ table.dataTable tr.odd td.sorting_1 {
         float: none;
         text-align: center;
         padding: 5px;
+    }
+    #chart-table{
+        font-size: 14px;    
     }
 
 }

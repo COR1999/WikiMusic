@@ -40,7 +40,13 @@ $(document).ready(function () {
     let date = new Date();
     $("#date").html(date.toLocaleString())
     console.log(date)
-
+    // Scrolls down to the artist cards after clicking the search button
+    $("#search").click(function () {
+        $('html,body').animate({
+            scrollTop: $(".artist-cards").offset().top
+        },
+            2000)
+    });
 })
 
 
@@ -182,7 +188,7 @@ function getCharts() {
     apiUrl("chart")
         .then(function (response) {
             let tracksArray = response.tracks.track;
-            rows = chartRows(tracksArray);
+            // rows = chartRows(tracksArray);
             console.log(tracksArray[0].name)
             tracksArray.forEach(function (track, index) {
                 let dataRow = [];
@@ -205,9 +211,9 @@ function getCharts() {
                 "autoWidth": false,
                 "columnDefs": [
                     { "width": "1%", "targets": 0 },
-                    { "width": "3%", "targets": 1 },
-                    { "width": "3%", "targets": 2 },
-                    { "width": "2%", "targets": 3 }
+                    { "width": "1%", "targets": 1 },
+                    { "width": "2%", "targets": 2 },
+                    { "width": "1%", "targets": 3 }
                 ],
                 columns: [
                     { title: "Number" },
