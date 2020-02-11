@@ -23,9 +23,15 @@ $(document).ready(function () {
         if ($("body").is(".index")) {
             submit.on("click", function () {
                 GetSelectedValue();
+                $('html,body').animate({
+                    scrollTop: $("#animation-div").offset().top,
+                },
+                    2500);
             });
-            $(".artist-cards").html(`<div class="home-chart"><h1>Be sure to check out are top 100 page <a href="/chart.html" id="here-Link">here</a></h1></div>`)
-        }
+
+
+        };
+        $(".artist-cards").html(`<div class="home-chart"><h1>Be sure to check out are top 100 page <a href="/chart.html" id="here-Link">here</a></h1></div>`)
     })
     // Checks if the enter key is pressed in the input
     $('#myInput').keydown(function (event) {
@@ -42,11 +48,7 @@ $(document).ready(function () {
     console.log(date)
     // Scrolls down to the artist cards after clicking the search button
     $("#search").click(function () {
-        $('html,body').animate({
-            scrollTop: $(".artist-cards").offset().top,
-            scrollTop: $(".song-list-div").offset().top
-        },
-            2500)
+
     });
 })
 
@@ -73,6 +75,10 @@ function searchTheAPI(result) {
     if (searchType === "album") {
         apiUrl(searchType, input)
             .then(function (response) {
+                // $(".artist-cards").fadeOut(1500);
+                $(".song-search-div").fadeOut(1500)
+                $(".list-songs-div").fadeOut(1500)
+
                 // console.log(response)
                 let albumArray = response.results.albummatches.album;
                 // let newAlbumArray = [];
@@ -101,15 +107,19 @@ function searchTheAPI(result) {
                     }
                     getSongs(album, index);
                 })
+
                 // $(".artist-cards").html(`${rows.join("")}`.replace(/,/g, ""))
                 $(".artist-cards").html(`<center><h2>Search Results</h2></center>${rows.join("")}`)
-
+                $(".artist-cards").fadeIn(1500)
 
 
             })
     } else if (searchType === "song") { // Checks to see if the dropdown value is Song and if it is goes to the songs endpoint and displays the data
         apiUrl(searchType, input)
             .then(function (response) {
+                $(".artist-cards").fadeOut(1500);
+                $(".list-songs").fadeOut(1500)
+
                 let trackArray = response.results.trackmatches.track;
                 console.log(response)
                 let newTrackArray = [];
@@ -123,8 +133,10 @@ function searchTheAPI(result) {
                     }
                 })
                 // $(".list-songs-div").slideDown("fast");
-                $(".artist-cards").html(`<div class="song-search-outer"><h2>Search Results</h2>${newTrackArrayRow.join("")}</div>`);
+                $(".song-search-div").html(`<div class="song-search-outer"><h2>Search Results</h2>${newTrackArrayRow.join("")}</div>`);
+
             })
+        $(".song-search-div").fadeIn(1500)
         // Sets the drop down value to a empty string
         dropdownValue = "";
     }
@@ -175,10 +187,13 @@ function getSongs(album, index) {
         let trackArray = [];
         arrayOfTracks.forEach(function (track) {
             $(`#view-songs${index}`).on("click", function () {
-                $(".artist-cards").slideUp("slow");
-                $(".list-songs-div").slideDown("fast");
+                // $("#animation-div").fadeOut(1500);
+                $(".artist-cards").fadeOut(1500)
+                // $(".search-songs-div").fadeOut(1500)
                 trackArray.push(`<div class="card col-sm-6 col-md-4 col-lg-3 ml-auto mr-auto" style="height:100px"><div class="track-name"><h4>${track.name}</h4></div><div class="track-duration"><p>Duration: ${turnSec(track.duration)}</p></div></div>`)
                 $(".list-songs-div").html(`<div class="album-songs">${albumImage}<div class="list-songs">${trackArray}</div></<div>`)
+                $(".list-songs-div").fadeIn(2000);
+
             })
 
         })
