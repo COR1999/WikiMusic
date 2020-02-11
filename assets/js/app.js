@@ -26,7 +26,7 @@ $(document).ready(function () {
                 $('html,body').animate({
                     scrollTop: $("#animation-div").offset().top,
                 },
-                    2500);
+                    3000);
             });
 
 
@@ -229,7 +229,7 @@ function getCharts() {
                 responsive: true,
                 "autoWidth": false,
                 "columnDefs": [
-                    { "width": "1%", "targets": 0 },
+                    { "width": "0%", "targets": 0 },
                     { "width": "1%", "targets": 1 },
                     { "width": "2%", "targets": 2 },
                     { "width": "1%", "targets": 3 }
