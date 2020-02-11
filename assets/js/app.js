@@ -43,9 +43,10 @@ $(document).ready(function () {
     // Scrolls down to the artist cards after clicking the search button
     $("#search").click(function () {
         $('html,body').animate({
-            scrollTop: $(".artist-cards").offset().top
+            scrollTop: $(".artist-cards").offset().top,
+            scrollTop: $(".song-list-div").offset().top
         },
-            2000)
+            2500)
     });
 })
 
@@ -121,6 +122,7 @@ function searchTheAPI(result) {
                         newTrackArray.length = 0;
                     }
                 })
+                // $(".list-songs-div").slideDown("fast");
                 $(".artist-cards").html(`<div class="song-search-outer"><h2>Search Results</h2>${newTrackArrayRow.join("")}</div>`);
             })
         // Sets the drop down value to a empty string
@@ -171,12 +173,14 @@ function getSongs(album, index) {
     }).then(function (data) {
         let arrayOfTracks = data.album.tracks.track;
         let trackArray = [];
-
         arrayOfTracks.forEach(function (track) {
             $(`#view-songs${index}`).on("click", function () {
-                trackArray.push(`<div class="card col-sm-6 col-md-4 col-lg-2" style="height:100px"><div class="track-name"><h4>${track.name}</h4></div><div class="track-duration"><p>Duration: ${turnSec(track.duration)}</p></div></div>`)
-                $(".artist-cards").html(`<div class="album-songs">${albumImage}<div class="list-songs">${trackArray}</div></<div>`.replace(/,/g, ""))
+                $(".artist-cards").slideUp("slow");
+                $(".list-songs-div").slideDown("fast");
+                trackArray.push(`<div class="card col-sm-6 col-md-4 col-lg-3 ml-auto mr-auto" style="height:100px"><div class="track-name"><h4>${track.name}</h4></div><div class="track-duration"><p>Duration: ${turnSec(track.duration)}</p></div></div>`)
+                $(".list-songs-div").html(`<div class="album-songs">${albumImage}<div class="list-songs">${trackArray}</div></<div>`)
             })
+
         })
     })
 }
