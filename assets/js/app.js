@@ -214,11 +214,11 @@ function getCharts() {
                 let newIndex = index + 1
                 let trackName = track.name
                 let artistName = track.artist.name
-                let playCount = track.playcount
+                let playCount = numberWithCommas(track.playcount)
                 dataRow.push(newIndex)
                 dataRow.push(trackName);
                 dataRow.push(artistName);
-                dataRow.push(numberWithCommas(playCount));
+                dataRow.push(playCount);
                 console.log(dataRow)
                 tableRows.push(dataRow)
             })
