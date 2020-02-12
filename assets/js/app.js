@@ -227,18 +227,18 @@ function getCharts() {
                 data: tableRows,
                 lengthChange: false,
                 responsive: true,
-                "autoWidth": false,
-                "columnDefs": [
-                    { "width": "0%", "targets": 0 },
-                    { "width": "1%", "targets": 1 },
-                    { "width": "2%", "targets": 2 },
-                    { "width": "1%", "targets": 3 }
-                ],
+                autoWidth: true,
+                // "columnDefs": [
+                //     { "width": "10%", "targets": 0 },
+                //     { "width": "40%", "targets": 1 },
+                //     { "width": "30%", "targets": 2 },
+                //     { "width": "20%", "targets": 3 }
+                // ],
                 columns: [
-                    { title: "Number" },
-                    { title: "Name" },
-                    { title: "Artist" },
-                    { title: "Play Count" }
+                    { title: "#", width: "10%" },
+                    { title: "Name", width: "10%" },
+                    { title: "Artist", width: "10%" },
+                    { title: "Play Count", width: "10%" }
                 ]
             })
         })

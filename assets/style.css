@@ -1,16 +1,15 @@
 /*My colors Shandy Brown="#FC9F5B" Tuscan="#FBD1A2" Dutch White="#ECE4B7" Pearl Aqua="#7DCFB6" UFO Green="#33CA7F"*/
 
-
-
 body{
-    /* background-color: #ECE4B7; */
+    background-color: #ECE4B7;
     font-weight: 400;
     margin: 0;
     padding:0;
     font-family: 'Lato', sans-serif;    
     background-color: #C0C0C0;
     font-display: swap;
-
+    min-height: 100%;
+    /* position: relative; */
 }
 
 /*Search Form*/
@@ -242,25 +241,30 @@ body{
     height: 700px;
 }
 /*Footer*/
-.page-footer a{
-    color:#C0C0C0;
-    font-size: 20px;
+#footer{
+    clear: both;
     position: relative;
-
-}
-.page-footer a:hover{
-    color: #E27D60;
-    position: relative;
-
-}
-.page-footer{
     background-color:#7f7f7f;
-    position: relative;
+    bottom: 0;
 }
+#footer a{
+    color:#C0C0C0;
+    font-size: 14px;
+
+}
+#footer a:hover{
+    color: #E27D60;
+
+}
+
 .footer-text{
+    font-size: 14px;
     padding: 5px;
     color: #C0C0C0;
 
+}
+.list-unstyled{
+    margin-bottom: 1px;
 }
 
 
@@ -288,16 +292,29 @@ color: #E27D60;
 padding: 10px;
 }
 /*Top Charts table*/
+.table-holder{
+    /* position: relative; */
+}
 .charts-image{
+    /* background-image: url("images/calming-lake-orignal.jpeg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: auto;
+    height: 100%;
+    padding-bottom: 50px; */
+}
+.charts-outer{
+    height: 100vh;
+    padding: 0;
+    color: #212529;
+    clear: both;
+}
+.chart{
     background-image: url("images/calming-lake-orignal.jpeg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: auto;
-    height: 800px;
-}
-.charts-outer{
-    padding: 0;
-    color: #212529;
+    height: 100vh;
 }
 #chart-table > tbody > tr{
     background-color: transparent;
@@ -318,13 +335,13 @@ table.dataTable tr.odd td.sorting_1 {
     text-align: center;
     background-color: rgba(255, 255, 255, 0.4);
     width: 70%;
-    height: 70%;
+    height: auto;
     margin-top: 10px;
 
 
 }
 #chart-table_wrapper{
-    height: 100%;
+    /* height: auto; */
     padding-top: 5px;
 }
 
@@ -355,6 +372,9 @@ table.dataTable tr.odd td.sorting_1 {
     border: #E27D60 solid 1px;
 }
 
+table.dataTable td {
+    padding: 2px 1px;
+}
 .dataTables_info {
     clear: both;
     float: left;
@@ -396,8 +416,8 @@ table.dataTable tr.odd td.sorting_1 {
     #chart-table{
         font-weight: 1000;
         font-size: 14px;
-        width: 80%;
-        height: 70%;
+        width: 100%;
+        height: 60%;
     }
     .dataTables_paginate > a,
     .dataTables_paginate > span,
