@@ -31,7 +31,7 @@ $(document).ready(function () {
 
 
         };
-        $(".artist-cards").html(`<div class="home-chart"><h1>Be sure to check out are top 100 page <a href="/chart.html" id="here-Link">here</a></h1></div>`)
+        $(".artist-cards").html(`<div class="home-chart"><h1>Be sure to check out are top 100 page <a href="chart.html" id="here-Link">here</a></h1></div>`)
     })
     // Checks if the enter key is pressed in the input
     $('#myInput').keydown(function (event) {
