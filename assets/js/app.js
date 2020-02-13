@@ -10,28 +10,42 @@ let submit = $("#search")
 
 $(document).ready(function () {
     // Only Loads the chart function when the charts page has been loaded 
-    window.onload = $(function () {
-        if ($("body").is(".chart")) {
-            getCharts()
+    // window.onload = $(function () {
+    //     if ($("body").is(".chart")) {
+    // let globalResizeTimer = null;
 
-            // buildTable(rows)
-            // console.log(getCharts())
-        }
-    });
+    // $(window).resize(function () {
+    //     if (globalResizeTimer != null) window.clearTimeout(globalResizeTimer);
+    //     globalResizeTimer = window.setTimeout(function () {
+    //         setEqualHeight();
+    //         getCharts()
+    //     }, 200);
+    // });
+    // window.addEventListener('resize', getCharts());
+    // window.onresize = getCharts()
+
+    // buildTable(rows)
+    // console.log(getCharts())
+    //     }
+    // });
     // Only listens for the submit on the Home page
     window.onload = $(function () {
         if ($("body").is(".index")) {
+            getCharts()
             submit.on("click", function () {
                 GetSelectedValue();
                 $('html,body').animate({
-                    scrollTop: $("#animation-div").offset().top,
+                    scrollTop: $("#animation-div").position().top,
+
                 },
-                    3000);
+                    1800);
+                // console.log($("#animation-div").position().top)
             });
 
 
         };
-        $(".artist-cards").html(`<div class="home-chart"><h1>Be sure to check out are top 100 page <a href="chart.html" id="here-Link">here</a></h1></div>`)
+        // $(".artist-cards").html(`<div class="home-chart"><h1>Hello and Wellcome to brand Name</h1>
+        // <p>If you have any questions about are content or anything to point out visit on social media</div>`)
     })
     // Checks if the enter key is pressed in the input
     $('#myInput').keydown(function (event) {
@@ -85,7 +99,7 @@ function searchTheAPI(result) {
 
                 let rows = [];
                 let cardRow = [];
-                let NumberPerRow = 3;
+                let NumberPerRow = 12;
                 let trackOuter = [];
                 albumArray.forEach(function (album, index) {
                     let imageIndex = 2;
@@ -97,7 +111,7 @@ function searchTheAPI(result) {
                             albumImage = `<img class="no-imagesizeing" src="assets/images/no-image-available.png">`
                         }
                     }
-                    cardRow.push(`<div class="card col-sm-12 col-md-12 col-lg-4">${albumImage}<h1>${album.artist}</h1><p class="title">${album.name}</p><button class="viewAlbum-songs"id="view-songs${index}">View Songs For This album</button></div>`)
+                    cardRow.push(`<div class="card col-sm-12 col-md-6 col-lg-4">${albumImage}<h1>${album.artist}</h1><p class="title">${album.name}</p><button class="viewAlbum-songs"id="view-songs${index}">View Songs</button></div>`)
                     if ((index + 1) % NumberPerRow === 0 || (index + 1) === albumArray.length) {
                         // cardRow.push(`<div class="card">${albumImage}<h1>${album.artist}</h1><p class="title">${album.name}</p></div>`)
                         rows.push(`<div class="row">${cardRow.join("")}</div>`);
@@ -227,7 +241,7 @@ function getCharts() {
                 data: tableRows,
                 lengthChange: false,
                 responsive: true,
-                autoWidth: true,
+                autoWidth: false,
                 // "columnDefs": [
                 //     { "width": "10%", "targets": 0 },
                 //     { "width": "40%", "targets": 1 },
@@ -235,8 +249,8 @@ function getCharts() {
                 //     { "width": "20%", "targets": 3 }
                 // ],
                 columns: [
-                    { title: "#", width: "10%" },
-                    { title: "Name", width: "10%" },
+                    { title: "#", width: "5%" },
+                    { title: "Name", width: "15%" },
                     { title: "Artist", width: "10%" },
                     { title: "Play Count", width: "10%" }
                 ]

@@ -3,7 +3,8 @@
 
 <head>
 	<meta charset="UTF-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0" /> -->
+	<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=yes" />
 	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
@@ -41,66 +42,81 @@
 			</form> -->
 		</div>
 	</nav>
-	<section>
-		<div class="hero-image">
-			<div class="search-bar">
-				<div class="choose">
+	<section class="flex-container px-0">
+		<div class="column-holder">
+			<div class="column-chart">
+				<!-- <div class="container-fluid px-0"> -->
+				<div class="charts-outer">
+					<!-- <div class="charts-image"> -->
+					<div class="chart-info">
+						<h2>Top 100 charts as of <span id="date"></span></h2>
+					</div>
+					<div class="table-holder">
+						<table id="chart-table">
 
-					<label for="option-menu">
-						<h2>Please Select a item to Search by</h2>
-					</label>
+						</table>
+					</div>
+					<!-- </div> -->
 				</div>
+				<!-- </div> -->
 
-				<div class="form-group">
-					<center>
-						<select class="form-control col-6" id="option-menu" name="option-menu">
-							<option value="album" selected>Album / Artist</option>
-							<option value="song">Song</option>
-						</select>
-					</center>
-				</div>
-				<!-- <div class="chart-button">
+				<!-- </div> -->
+			</div>
+			<div class="column-search">
+				<!-- <div class="hero-image"> -->
+				<div class="search-bar">
+					<div class="choose">
+
+						<label for="option-menu">
+							<h2>Please Select a item to Search by</h2>
+						</label>
+					</div>
+
+					<div class="form-group">
+						<center>
+							<select class="form-control col-6" id="option-menu" name="option-menu">
+								<option value="album" selected>Album / Artist</option>
+								<option value="song">Song</option>
+							</select>
+						</center>
+					</div>
+					<!-- <div class="chart-button">
 					<button class="btn" type="button" id="chart">Charts</button>
 				</div> -->
-				<div class="search-form">
-					<center>
-						<label>
-							<span for="myInput" class="sr-only">Search input</span>
-							<input class="form-control ml-auto mr-auto" type="search" id="myInput">
-						</label>
-					</center>
-					<button class="btn" type="button" id="search"><i class="fa fa-search"></i><span
-							class="sr-only">Search Button</span></button>
+					<div class="search-form">
+						<center>
+							<label>
+								<span for="myInput" class="sr-only">Search input</span>
+								<input class="form-control ml-auto mr-auto" type="search" id="myInput">
+							</label>
+						</center>
+						<button class="btn" type="button" id="search"><i class="fa fa-search"></i><span
+								class="sr-only">Search Button</span></button>
+					</div>
 				</div>
 			</div>
-
+			<!-- </div> -->
 		</div>
-	</section>
+		<!-- <div class=" homepage-body">
 
-	<section class="container-fluid animation-div">
-		<div id="animation-div">
-			<div class="container artist-cards">
-				<div id="artist-card">
+			<div id="animation-div">
+				<div class="artist-cards">
+					<div id="artist-card">
+					</div>
 
-					<!-- <div id="artist-list">
 				</div>
-				<div id="album-list"></div>
-				<div id="track-list"></div> -->
-					<!-- <div id="artist-playNow">
-				</div> -->
+				<div class="list-songs-div">
+
 				</div>
+				<div class="song-search-div">
 
+				</div>
 			</div>
-			<div class="list-songs-div">
-
-			</div>
-			<div class="song-search-div">
-
-			</div>
-		</div>
-
-
+		</div> -->
 	</section>
+	<!-- <section class="container-fluid px-0"">
+		
+	</section> -->
 	<footer>
 		<div id="footer">
 			<!-- Footer Elements -->
