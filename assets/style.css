@@ -24,10 +24,10 @@ body{
 }
 .info-text h1{
     font-weight: 800;
-    padding: 30px;
+    /* padding: 30px; */
 }
 .info-text p{
-    font-size: 150%;
+    /* font-size: 150%; */
 }
 .column-holder{
     /* float: left; */
@@ -265,6 +265,9 @@ body{
     padding-top: 5px;
     margin: auto;
 }
+.track-name h4{
+    font-weight: bold;
+}
 .track-duration{
     margin: auto;
 }
@@ -421,7 +424,7 @@ table.dataTable tr.odd td.sorting_1 {
     font-size: 16px;
     /* margin: auto; */
     text-align: center;
-    background-color: rgba(255, 255, 255, 0.4);
+    background-color: rgba(255, 255, 255, 0.3);
     /* width: 100%; */
     /* height: 70%; */
     /* margin-top: 10px;
@@ -481,7 +484,7 @@ table.dataTable thead th {
 .dataTables_paginate > span {
     font-weight: 800;
     font-size: 24px;
-    color: #E27D60;
+    color: #212529;
     margin: 10px;
 }
 .dataTables_paginate > span > a:hover,
@@ -490,7 +493,7 @@ table.dataTable thead th {
 }
 .dataTables_paginate{
     font-weight: 1000;
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: rgba(255, 255, 255, 0.3);
     float: none;
     text-align: center;
     padding: 5px;
@@ -506,6 +509,8 @@ table.dataTable thead th {
 
 .chart-info > h2{
     font-size: 130%;
+    font-weight: 1000;
+    /* background-color: rgba(0, 0, 0, 0.4); */
     padding: 10px;
     text-align: center;
 }

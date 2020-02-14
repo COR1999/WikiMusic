@@ -7,18 +7,18 @@ let dropdownValue;
 let myInput = $("#myInput");
 let submit = $("#search")
 // let chartData = apiUrl("chart")
-
+let table;
+let height = $(window).height();
 $(document).ready(function () {
-
-    $(window).resize(function () {
-        //resize just happened, pixels changed
-        // getCharts();
+    $(window).on("resize", function () {
+        resizedHeight = $(window).height();
+        tableResize(resizedHeight);
     });
-    let height = $(window).height();
+
     // Only listens for the submit on the Home page
     window.onload = $(function () {
         if ($("body").is(".index")) {
-            getCharts(height)
+            getCharts()
             submit.on("click", function () {
                 GetSelectedValue();
                 $('html,body').animate({
@@ -28,9 +28,13 @@ $(document).ready(function () {
                     1800);
                 // console.log($("#animation-div").position().top)
             });
-
-
+            if (height > 650) {
+                table.page.len(25).draw();
+            } else {
+                table.page.len(10).draw();
+            }
         };
+
         // $(".artist-cards").html(`<div class="home-chart"><h1>Hello and Wellcome to brand Name</h1>
         // <p>If you have any questions about are content or anything to point out visit on social media</div>`)
     })
@@ -203,7 +207,7 @@ function getSongs(album, index) {
 
 // Searches the api for the top 100 songs(cause i set it to only give back 100), then turns this response into arrays of 4 items, gives this data to the dataTables
 // and displays them nicely on the page for us
-function getCharts(height) {
+function getCharts() {
     let tableRows = [];
     apiUrl("chart")
         .then(function (response) {
@@ -223,32 +227,11 @@ function getCharts(height) {
                 console.log(dataRow)
                 tableRows.push(dataRow)
             })
-            // let height = $(window).height();
-            filterSize = 10
-            if (height > 600) {
-                filterSize = 25;
-            }
+
             console.log(window.resize);
             console.log(tableRows)
-            $("#chart-table").DataTable({
-                data: tableRows,
-                pageLength: filterSize,
-                lengthChange: false,
-                responsive: true,
-                autoWidth: false,
-                // "columnDefs": [
-                //     { "width": "10%", "targets": 0 },
-                //     { "width": "40%", "targets": 1 },
-                //     { "width": "30%", "targets": 2 },
-                //     { "width": "20%", "targets": 3 }
-                // ],
-                columns: [
-                    { title: "#", width: "5%" },
-                    { title: "Name", width: "15%" },
-                    { title: "Artist", width: "10%" },
-                    { title: "Play Count", width: "10%" }
-                ]
-            })
+            buildTable(tableRows)
+
         })
 
 }
@@ -266,9 +249,30 @@ function numberWithCommas(num) {
     numParts[0] = numParts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     return numParts.join(".");
 }
-
-
-
+// Builds DataTable 
+function buildTable(array) {
+    table = $("#chart-table").DataTable({
+        data: array,
+        lengthChange: false,
+        responsive: true,
+        autoWidth: false,
+        columns: [
+            { title: "#", width: "5%" },
+            { title: "Name", width: "15%" },
+            { title: "Artist", width: "10%" },
+            { title: "Play Count", width: "10%" }
+        ]
+    });
+    tableResize(height);
+}
+// Sets the size of DataTable
+function tableResize(height) {
+    if (height > 620) {
+        table.page.len(25).draw();
+    } else {
+        table.page.len(10).draw();
+    }
+}
 
 
 // function getTableElement(el, value) {
