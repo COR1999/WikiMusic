@@ -11,6 +11,7 @@ body{
     font-family: 'Lato', sans-serif;    
     background-color: #ECE4B7;
     font-display: swap;
+    overflow: scroll;
 }
 
 .homepage-body{
@@ -498,6 +499,12 @@ table.dataTable thead th {
     float: none;
     text-align: center;
     padding: 5px;
+}
+@media(max-width:300px){
+    .dataTables_paginate > a,
+    .dataTables_paginate > span{
+        font-size: 20px;
+    }
 }
 
 
