@@ -290,66 +290,8 @@ function tableResize(height) {
         table.page.len(10).draw();
     }
 }
-
-
-// function getTableElement(el, value) {
-
-//     let text = value;
-//     if (el) {
-//         text = el;
-//     }
-//     let str = `<td>${text}</td>`
-//     return str
-// }
-// function chartHeaders() {
-//     let tableHeader = ""
-//     let tableNumber = `<th scope="col">Number</th>`,
-//         tableSong = `<th scope="col">Song</th>`,
-//         tableArtist = `<th scope="col">Artist</th>`,
-//         tablePlaycount = `<th scope="col" >Play count</th>`;
-
-
-//     tableHeader = tableNumber + tableSong + tableArtist + tablePlaycount
-
-//     return `<thead><tr>${tableHeader}</tr></thead>`;
-// }
-// function chartRows(obj) {
-//     let tableRows = [];
-//     obj.forEach(function (track, index) {
-//         let dataRow = [];
-
-//         let newIndex = (getTableElement(index + 1));
-//         let trackName = (getTableElement(track.name));
-//         let artistName = (getTableElement(track.artist.name));
-//         let playCount = (getTableElement(numberWithCommas(track.playcount)));
-//         // str = newIndex + trackName + artistName + playCount
-//         dataRow.push(newIndex)
-//         dataRow.push(trackName);
-//         dataRow.push(artistName);
-//         dataRow.push(playCount);
-
-//         // tableRows.push(`<tr>${str}</tr>`);
-
-//         tableRows.push(`<tr >${dataRow.join("")}</tr>`);
-
-//     });
-
-//     let setOfPages = [];
-//     // pageButtons(pageSize)
-//     //     .then(function (l) {
-//     //         console.log(l)
-//     //     })
-//     // console.log(tableRows.length)
-//     // let pageSize = 10;
-//     // let totalPages = Math.ceil(tableRows.length / pageSize)
-//     // while (setOfPages.length < totalPages) {
-//     //     setOfPages.push(tableRows.splice(0, pageSize))
-//     // }
-//     // console.log(setOfPages)
-//     console.log(setOfPages)
-//     // return tableRows.join("");
-//     // return setOfPages
-
-//     return tableRows
-// }
-
+// https://stackoverflow.com/questions/895659/how-do-i-block-or-restrict-special-characters-from-input-fields-with-jquery
+// i added \s so people can input spaces
+$('#myInput').on('input', function () {
+    $(this).val($(this).val().replace(/[^a-zA-Z0-9\s]/gi, ""));
+});
