@@ -17,23 +17,16 @@ $(document).ready(function () {
 
     // Only listens for the submit on the Home page
     window.onload = $(function () {
-        if ($("body").is(".index")) {
-            getCharts()
-            submit.on("click", function () {
-                GetSelectedValue();
-                $('html,body').animate({
-                    scrollTop: $("#animation-div").position().top,
+        getCharts()
+        submit.on("click", function () {
+            GetSelectedValue();
+            $('html,body').animate({
+                scrollTop: $("#animation-div").position().top,
 
-                },
-                    1800);
-                // console.log($("#animation-div").position().top)
-            });
-            if (height > 650) {
-                table.page.len(25).draw();
-            } else {
-                table.page.len(10).draw();
-            }
-        };
+            },
+                1800);
+            // console.log($("#animation-div").position().top)
+        });
 
         // $(".artist-cards").html(`<div class="home-chart"><h1>Hello and Wellcome to brand Name</h1>
         // <p>If you have any questions about are content or anything to point out visit on social media</div>`)
@@ -50,7 +43,7 @@ $(document).ready(function () {
     // Gets a date to display on the chart's page
     let date = new Date();
     $("#date").html(date.toLocaleString())
-    console.log(date)
+    // console.log(date)
     // Scrolls down to the artist cards after clicking the search button
     $("#search").click(function () {
 
@@ -64,7 +57,7 @@ function GetSelectedValue() {
     let result = e.options[e.selectedIndex].value;
     // $(e).focus();
     $(result).toggleClass('active');
-    console.log(result);
+    // console.log(result);
     searchTheAPI(result);
 }
 
@@ -73,9 +66,12 @@ function searchTheAPI(result) {
 
     let input;
     let searchType = result;
-    console.log(searchType);
+    // console.log(searchType);
     // Sets to input to equal the value in the input feild
     input = $("#myInput").val();
+    if (input.length === 0) {
+        $(".info-text").html("<h1>Invalid Input</h1>")
+    }
     // if the Search Type equal album then searches the album endpoint and displays the data in cards
     if (searchType === "album") {
         apiUrl(searchType, input)
@@ -99,7 +95,7 @@ function searchTheAPI(result) {
                     if (album.image.length >= 2) {
                         if (album.image[imageIndex]["#text"] === "") {
                             // console.log("working" album.artist);
-                            albumImage = `<img class="no-imagesizeing" src="assets/images/no-image-available.png">`
+                            albumImage = `<img class="no-imagesizeing"src="assets/images/no-image-available.png">`
                         }
                     }
                     cardRow.push(`<div class="card col-sm-12 col-md-6 col-lg-4">${albumImage}<h1>${album.artist}</h1><p class="title">${album.name}</p><button class="viewAlbum-songs"id="view-songs${index}">View Songs</button></div>`)
@@ -110,6 +106,7 @@ function searchTheAPI(result) {
                         cardRow.length = 0;
 
                     }
+                    // console.log(album)
                     getSongs(album, index);
                 })
 
@@ -126,7 +123,7 @@ function searchTheAPI(result) {
                 $(".list-songs-div").fadeOut(1500)
 
                 let trackArray = response.results.trackmatches.track;
-                console.log(response)
+                // console.log(response)
                 let newTrackArray = [];
                 let NumberPerRow = 4;
                 let newTrackArrayRow = [];
@@ -163,17 +160,22 @@ function apiUrl(searchType, input) {
             searchBy = "chart.gettoptracks";
             input = "";
             limit = "100"
-
             break;
         default:
-            console.log("unkown Input", searchBy);
+            console.log("unKnown Input", searchBy);
+
     }
+    // if (input.length === 0) {
+    //     console.log("unKnown Input", input)
+    //     $(".info-text").html("<h1>Invalid Input</h1>")
+    // }
     return (
         $.ajax({
             "async": true,
             "crossDomain": true,
             "url": `${baseUrl}/2.0/?method=${searchBy}${input}&api_key=${apiKey}&limit=${limit}&format=json`,
             "method": "GET",
+
         }))
 }
 
@@ -181,7 +183,13 @@ function apiUrl(searchType, input) {
 function getSongs(album, index) {
     let imageIndex = 2;
     let albumImage = `<img src="${album.image[imageIndex]["#text"]}">`
-
+    // console.log(album.artist)
+    if (album.image.length >= 2) {
+        if (album.image[imageIndex]["#text"] === "") {
+            // console.log("working" album.artist);
+            albumImage = `<img class="no-imagesizeing" src="assets/images/no-image-available.png">`
+        }
+    }
     $.ajax({
         "async": true,
         "crossDomain": true,
@@ -189,19 +197,28 @@ function getSongs(album, index) {
         "method": "GET",
     }).then(function (data) {
         let arrayOfTracks = data.album.tracks.track;
+        // console.log(arrayOfTracks)
+        if (arrayOfTracks.length < 1 || arrayOfTracks === undefined) {
+            $(`#view-songs${index}`).html(`<p class="mt-1">Sorry no song</p>`)
+        }
         let trackArray = [];
         arrayOfTracks.forEach(function (track) {
+            // console.log(track)
+
             $(`#view-songs${index}`).on("click", function () {
+
                 // $("#animation-div").fadeOut(1500);
                 $(".artist-cards").fadeOut(1500)
                 // $(".search-songs-div").fadeOut(1500)
+
                 trackArray.push(`<div class="card col-sm-6 col-md-4 col-lg-3 ml-auto mr-auto" style="height:100px"><div class="track-name"><h4>${track.name}</h4></div><div class="track-duration"><p>Duration: ${turnSec(track.duration)}</p></div></div>`)
                 $(".list-songs-div").html(`<div class="album-songs">${albumImage}<div class="list-songs">${trackArray}</div></<div>`)
                 $(".list-songs-div").fadeIn(2000);
 
             })
-
         })
+        // console.log(data)
+
     })
 }
 
@@ -213,7 +230,7 @@ function getCharts() {
         .then(function (response) {
             let tracksArray = response.tracks.track;
             // rows = chartRows(tracksArray);
-            console.log(tracksArray[0].name)
+            // console.log(tracksArray[0].name)
             tracksArray.forEach(function (track, index) {
                 let dataRow = [];
                 let newIndex = index + 1
@@ -224,12 +241,12 @@ function getCharts() {
                 dataRow.push(trackName);
                 dataRow.push(artistName);
                 dataRow.push(playCount);
-                console.log(dataRow)
+                // console.log(dataRow)
                 tableRows.push(dataRow)
             })
 
-            console.log(window.resize);
-            console.log(tableRows)
+            // console.log(window.resize);
+            // console.log(tableRows)
             buildTable(tableRows)
 
         })

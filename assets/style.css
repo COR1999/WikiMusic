@@ -234,7 +234,8 @@ body{
     font-size: 18px;
 }
 .no-imagesizeing{
-    max-width: 174px;
+    max-width: 214px;
+    max-height: 214px;
 }
 .viewAlbum-songs{
     margin: auto;
