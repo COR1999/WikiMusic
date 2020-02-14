@@ -522,6 +522,11 @@ table.dataTable thead th {
         font-size: 20px;
     }
 }
+@media screen and (max-device-width: 480px){
+    body{
+        -webkit-text-size-adjust: 100%;
+    }
+}
 
 
 
