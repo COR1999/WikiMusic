@@ -131,7 +131,14 @@ body{
     text-align: center;
     margin-top: 10px;
     padding: 10px;
-
+}
+@media(max-width:450px){
+    .search-form input{
+        width: 70%;
+    }
+    .choose h2{
+        font-size: 130%;
+    }
 }
 
 .search-form button{
