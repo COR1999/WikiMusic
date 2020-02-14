@@ -46,9 +46,9 @@ In this section, you should go over the different parts of your project, and des
 
 ### Existing Features
 
-1. Mobile first responsive design so that the application looks good and preforms well on mutiple device resolution.
-2. This applications header has a navigation bar that tells u the page you are currently on and links to the other page
-3. The footer on this project has links to social media and has a copy wrtie stamp
+1. Mobile first responsive design so that the application looks good and performs well on multiple device resolution.
+2. This applications header has the brand name
+3. The footer on this project has links to social media and has a copyright stamp
 4. The search form allows you to search for an Album/Artist or Song name.
 5. View album songs is a button when u search for a Album/Artist you can click this button to view the songs in that Album.
 6. View top 100 Is a table that shows you the top 100 songs currently you can also sort them by ranking name artist and playcount. You can search for songs too.

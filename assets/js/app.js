@@ -5,10 +5,11 @@ let dropdownValue;
 // let submit = document.getElementById('search');
 // let myInput = document.getElementById("myInput");
 let myInput = $("#myInput");
-let submit = $("#search")
+let submit = $("#search");
 // let chartData = apiUrl("chart")
 let table;
 let height = $(window).height();
+let fadeDuration = 1500;
 $(document).ready(function () {
     $(window).on("resize", function () {
         resizedHeight = $(window).height();
@@ -16,38 +17,26 @@ $(document).ready(function () {
     });
 
     // Only listens for the submit on the Home page
-    window.onload = $(function () {
-        getCharts()
-        submit.on("click", function () {
-            GetSelectedValue();
-            $('html,body').animate({
-                scrollTop: $("#animation-div").position().top,
+    getCharts()
+    submit.on("click", function () {
+        GetSelectedValue();
+        $('html,body').animate({
+            scrollTop: $("#animation-div").position().top,
 
-            },
-                1800);
-            // console.log($("#animation-div").position().top)
-        });
-
-        // $(".artist-cards").html(`<div class="home-chart"><h1>Hello and Wellcome to brand Name</h1>
-        // <p>If you have any questions about are content or anything to point out visit on social media</div>`)
+        },
+            fadeDuration);
     })
     // Checks if the enter key is pressed in the input
     $('#myInput').keydown(function (event) {
         if (event.keyCode == '13') {
             $("#search").click();
         }
-        else {
-            //do nothing :)
-        }
+
     });
     // Gets a date to display on the chart's page
     let date = new Date();
     $("#date").html(date.toLocaleString())
-    // console.log(date)
-    // Scrolls down to the artist cards after clicking the search button
-    $("#search").click(function () {
-
-    });
+    // console.log(date)    
 })
 
 
@@ -61,88 +50,79 @@ function GetSelectedValue() {
     searchTheAPI(result);
 }
 
-
+// Search the API
 function searchTheAPI(result) {
-
     let input;
     let searchType = result;
-    // console.log(searchType);
     // Sets to input to equal the value in the input feild
     input = $("#myInput").val();
     if (input.length === 0) {
         $(".info-text").html("<h1>Invalid Input</h1>")
-    }
-    // if the Search Type equal album then searches the album endpoint and displays the data in cards
-    if (searchType === "album") {
-        apiUrl(searchType, input)
-            .then(function (response) {
-                // $(".artist-cards").fadeOut(1500);
-                $(".song-search-div").fadeOut(1500)
-                $(".list-songs-div").fadeOut(1500)
+    } else {
+        // if the Search Type equal album then searches the album endpoint and displays the data in cards
+        if (searchType === "album") {
+            apiUrl(searchType, input)
+                .then(function (response) {
+                    // Animations
+                    $(".song-search-div").fadeOut(fadeDuration)
+                    $(".list-songs-div").fadeOut(fadeDuration)
 
-                // console.log(response)
-                let albumArray = response.results.albummatches.album;
-                // let newAlbumArray = [];
+                    let albumArray = response.results.albummatches.album;
+                    let rows = createAlbumCards(albumArray);
 
-                let rows = [];
-                let cardRow = [];
-                let NumberPerRow = 12;
-                let trackOuter = [];
-                albumArray.forEach(function (album, index) {
-                    let imageIndex = 2;
-                    let albumImage = `<img src="${album.image[imageIndex]["#text"]}">`
-                    // console.log(album.artist)
-                    if (album.image.length >= 2) {
-                        if (album.image[imageIndex]["#text"] === "") {
-                            // console.log("working" album.artist);
-                            albumImage = `<img class="no-imagesizeing"src="assets/images/no-image-available.png">`
-                        }
-                    }
-                    cardRow.push(`<div class="card col-sm-12 col-md-6 col-lg-4">${albumImage}<h1>${album.artist}</h1><p class="title">${album.name}</p><button class="viewAlbum-songs"id="view-songs${index}">View Songs</button></div>`)
-                    if ((index + 1) % NumberPerRow === 0 || (index + 1) === albumArray.length) {
-                        // cardRow.push(`<div class="card">${albumImage}<h1>${album.artist}</h1><p class="title">${album.name}</p></div>`)
-                        rows.push(`<div class="row">${cardRow.join("")}</div>`);
+                    $(".artist-cards").html(`<center><h2>Search Results</h2></center>${rows.join("")}`)
+                    $(".artist-cards").fadeIn(fadeDuration)
+                })
+        } else if (searchType === "song") { // Checks to see if the dropdown value is Song and if it is goes to the songs endpoint and displays the data
+            apiUrl(searchType, input)
+                .then(function (response) {
+                    // Animations
+                    $(".artist-cards").fadeOut(fadeDuration);
+                    $(".list-songs-div").fadeOut(fadeDuration);
 
-                        cardRow.length = 0;
+                    trackArray = response.results.trackmatches.track;
+                    let rows = createSongsCards(trackArray);
 
-                    }
-                    // console.log(album)
-                    getSongs(album, index);
+                    $(".song-search-div").html(`<div class="song-search-outer"><h2>Search Results</h2>${rows.join("")}</div>`);
+                    $(".song-search-div").fadeIn(fadeDuration)
                 })
 
-                // $(".artist-cards").html(`${rows.join("")}`.replace(/,/g, ""))
-                $(".artist-cards").html(`<center><h2>Search Results</h2></center>${rows.join("")}`)
-                $(".artist-cards").fadeIn(1500)
-
-
-            })
-    } else if (searchType === "song") { // Checks to see if the dropdown value is Song and if it is goes to the songs endpoint and displays the data
-        apiUrl(searchType, input)
-            .then(function (response) {
-                $(".artist-cards").fadeOut(1500);
-                $(".list-songs-div").fadeOut(1500)
-
-                let trackArray = response.results.trackmatches.track;
-                // console.log(response)
-                let newTrackArray = [];
-                let NumberPerRow = 4;
-                let newTrackArrayRow = [];
-                trackArray.forEach(function (track, index) {
-                    newTrackArray.push(`<div class="card songs-search col-sm-6 col-md-3 col-lg-2"><h4>${track.name}</h4><p>Artist: ${track.artist}<br>Total listens: ${(numberWithCommas(track.listeners))}</p></div>`)
-                    if ((index + 1) % NumberPerRow === 0 || (index + 1) === trackArray.length) {
-                        newTrackArrayRow.push(`<div class="row">${newTrackArray.join("")}</div>`);
-                        newTrackArray.length = 0;
-                    }
-                })
-                // $(".list-songs-div").slideDown("fast");
-                $(".song-search-div").html(`<div class="song-search-outer"><h2>Search Results</h2>${newTrackArrayRow.join("")}</div>`);
-
-            })
-        $(".song-search-div").fadeIn(1500)
-        // Sets the drop down value to a empty string
-        dropdownValue = "";
+            // Sets the drop down value to a empty string
+            dropdownValue = "";
+        }
     }
 }
+// Create the Cards
+function createSongsCards(trackArray) {
+    let rows = [];
+    let newTrackArray = [];
+    let NumberPerRow = 4;
+    trackArray.forEach(function (track, index) {
+        newTrackArray.push(`<div class="card songs-search col-sm-6 col-md-3 col-lg-2"><h4>${track.name}</h4><p>Artist: ${track.artist}<br>Total listens: ${(numberWithCommas(track.listeners))}</p></div>`)
+        if ((index + 1) % NumberPerRow === 0 || (index + 1) === trackArray.length) {
+            rows.push(`<div class="row">${newTrackArray.join("")}</div>`);
+            newTrackArray.length = 0;
+        }
+    })
+    return rows;
+}
+function createAlbumCards(albumArray) {
+    let rows = [];
+    let cardRow = [];
+    let NumberPerRow = 12;
+    albumArray.forEach(function (album, index) {
+        let albumImage = checkIfImageExists(album);
+        cardRow.push(`<div class="card col-sm-12 col-md-6 col-lg-4">${albumImage}<h1>${album.artist}</h1><p class="title">${album.name}</p><button class="viewAlbum-songs"id="view-songs${index}">View Songs</button></div>`)
+        if ((index + 1) % NumberPerRow === 0 || (index + 1) === albumArray.length) {
+            rows.push(`<div class="row">${cardRow.join("")}</div>`);
+            cardRow.length = 0;
+        }
+        getSongs(album, index);
+    })
+    return rows;
+}
+
+
 // Switch statement that checks to see if the input is album or song, or if they are on the chart's page then its set to chart
 function apiUrl(searchType, input) {
     let limit;
@@ -181,15 +161,7 @@ function apiUrl(searchType, input) {
 
 // Gets the song when u click on the album/artist card
 function getSongs(album, index) {
-    let imageIndex = 2;
-    let albumImage = `<img src="${album.image[imageIndex]["#text"]}">`
-    // console.log(album.artist)
-    if (album.image.length >= 2) {
-        if (album.image[imageIndex]["#text"] === "") {
-            // console.log("working" album.artist);
-            albumImage = `<img class="no-imagesizeing" src="assets/images/no-image-available.png">`
-        }
-    }
+    let albumImage = checkIfImageExists(album);
     $.ajax({
         "async": true,
         "crossDomain": true,
@@ -199,27 +171,40 @@ function getSongs(album, index) {
         let arrayOfTracks = data.album.tracks.track;
         // console.log(arrayOfTracks)
         if (arrayOfTracks.length < 1 || arrayOfTracks === undefined) {
-            $(`#view-songs${index}`).html(`<p class="mt-1">Sorry no song</p>`)
+            $(`#view-songs${index}`).html(`<p class="mt-1">Sorry no songs</p>`)
         }
         let trackArray = [];
         arrayOfTracks.forEach(function (track) {
             // console.log(track)
 
             $(`#view-songs${index}`).on("click", function () {
-
                 // $("#animation-div").fadeOut(1500);
-                $(".artist-cards").fadeOut(1500)
+                $(".artist-cards").fadeOut(fadeDuration)
                 // $(".search-songs-div").fadeOut(1500)
 
                 trackArray.push(`<div class="card col-sm-6 col-md-4 col-lg-3 ml-auto mr-auto" style="height:100px"><div class="track-name"><h4>${track.name}</h4></div><div class="track-duration"><p>Duration: ${turnSec(track.duration)}</p></div></div>`)
                 $(".list-songs-div").html(`<div class="album-songs">${albumImage}<div class="list-songs">${trackArray}</div></<div>`)
-                $(".list-songs-div").fadeIn(2000);
+                $(".list-songs-div").fadeIn(fadeDuration);
 
             })
         })
         // console.log(data)
 
     })
+}
+
+function checkIfImageExists(album) {
+    let imageIndex = 2;
+    let albumImage;
+    if (album.image.length >= imageIndex) {
+        if (album.image[imageIndex]["#text"] === "") {
+            albumImage = `<img class="no-imagesizeing" src="assets/images/no-image-available.png">`;
+        }
+        else {
+            albumImage = `<img src="${album.image[imageIndex]["#text"]}">`;
+        }
+    }
+    return albumImage;
 }
 
 // Searches the api for the top 100 songs(cause i set it to only give back 100), then turns this response into arrays of 4 items, gives this data to the dataTables
@@ -229,8 +214,6 @@ function getCharts() {
     apiUrl("chart")
         .then(function (response) {
             let tracksArray = response.tracks.track;
-            // rows = chartRows(tracksArray);
-            // console.log(tracksArray[0].name)
             tracksArray.forEach(function (track, index) {
                 let dataRow = [];
                 let newIndex = index + 1
@@ -241,14 +224,9 @@ function getCharts() {
                 dataRow.push(trackName);
                 dataRow.push(artistName);
                 dataRow.push(playCount);
-                // console.log(dataRow)
                 tableRows.push(dataRow)
             })
-
-            // console.log(window.resize);
-            // console.log(tableRows)
             buildTable(tableRows)
-
         })
 
 }

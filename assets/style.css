@@ -291,7 +291,8 @@ body{
     margin: auto;
 }
 .track-name h4{
-    font-weight: bold;
+    font-weight: 600;
+    font-size: 110%;
 }
 .track-duration{
     margin: auto;
@@ -514,7 +515,7 @@ table.dataTable thead th {
 }
 .dataTables_paginate > span > a:hover,
 .dataTables_paginate > a:hover{
-    color: #7DCFB6;
+    color: #E27D60;
 }
 .dataTables_paginate{
     font-weight: 1000;
