@@ -9,25 +9,11 @@ let submit = $("#search")
 // let chartData = apiUrl("chart")
 
 $(document).ready(function () {
-    // Only Loads the chart function when the charts page has been loaded 
-    // window.onload = $(function () {
-    //     if ($("body").is(".chart")) {
-    // let globalResizeTimer = null;
 
-    // $(window).resize(function () {
-    //     if (globalResizeTimer != null) window.clearTimeout(globalResizeTimer);
-    //     globalResizeTimer = window.setTimeout(function () {
-    //         setEqualHeight();
-    //         getCharts()
-    //     }, 200);
-    // });
-    // window.addEventListener('resize', getCharts());
-    // window.onresize = getCharts()
-
-    // buildTable(rows)
-    // console.log(getCharts())
-    //     }
-    // });
+    $(window).resize(function () {
+        //resize just happened, pixels changed
+        // getCharts();
+    });
     // Only listens for the submit on the Home page
     window.onload = $(function () {
         if ($("body").is(".index")) {
@@ -236,9 +222,16 @@ function getCharts() {
                 console.log(dataRow)
                 tableRows.push(dataRow)
             })
+            let height = $(window).height();
+            filterSize = 10
+            if (height > 600) {
+                filterSize = 25;
+            }
+            console.log(window.resize);
             console.log(tableRows)
             $("#chart-table").DataTable({
                 data: tableRows,
+                pageLength: filterSize,
                 lengthChange: false,
                 responsive: true,
                 autoWidth: false,
