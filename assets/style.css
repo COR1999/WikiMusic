@@ -516,7 +516,7 @@ table.dataTable thead th {
     text-align: center;
     padding: 5px;
 }
-@media(max-width:301px){
+@media(max-width:320px){
     .dataTables_paginate > a,
     .dataTables_paginate > span{
         font-size: 20px;
