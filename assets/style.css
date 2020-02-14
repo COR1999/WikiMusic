@@ -105,6 +105,15 @@ body{
 
     }
 }
+@media(max-width: 300px){
+    .column-search{
+        /* width: 99%; */
+    }
+    .column-chart{
+        /* width: 99%; */
+
+    }
+}
 /*Search Form*/
 .choose h2{
     text-align: center;
@@ -507,7 +516,7 @@ table.dataTable thead th {
     text-align: center;
     padding: 5px;
 }
-@media(max-width:300px){
+@media(max-width:301px){
     .dataTables_paginate > a,
     .dataTables_paginate > span{
         font-size: 20px;
