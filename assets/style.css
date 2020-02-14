@@ -11,32 +11,24 @@ body{
     font-family: 'Lato', sans-serif;    
     background-color: #ECE4B7;
     font-display: swap;
-    /* min-height: 100vh; */
-    /* position: relative; */
-    /* min-height: 100%; */
-
 }
-/*CHANGE THIS !*/
+
 .homepage-body{
     padding: 0;
     margin: 0;
     text-align: center;
-    /* margin:50px; */
-    /* margin-top: 100vh; */
-    /* padding: 0; */
-    /* margin: 0; */
     background-color: #ECE4B7;
-    /* position: relative; */
-    /* Quick Fix */
-    /* margin-bottom: 110px; */
 }
 .homepage-body > div{
     min-height: 0;
 }
-.home-chart{
-    /* padding:10px; */
+.info-text h1{
+    font-weight: 800;
+    padding: 30px;
 }
-
+.info-text p{
+    font-size: 150%;
+}
 .column-holder{
     /* float: left; */
     height: 100%;

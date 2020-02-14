@@ -14,10 +14,11 @@ $(document).ready(function () {
         //resize just happened, pixels changed
         // getCharts();
     });
+    let height = $(window).height();
     // Only listens for the submit on the Home page
     window.onload = $(function () {
         if ($("body").is(".index")) {
-            getCharts()
+            getCharts(height)
             submit.on("click", function () {
                 GetSelectedValue();
                 $('html,body').animate({
@@ -202,7 +203,7 @@ function getSongs(album, index) {
 
 // Searches the api for the top 100 songs(cause i set it to only give back 100), then turns this response into arrays of 4 items, gives this data to the dataTables
 // and displays them nicely on the page for us
-function getCharts() {
+function getCharts(height) {
     let tableRows = [];
     apiUrl("chart")
         .then(function (response) {
@@ -222,7 +223,7 @@ function getCharts() {
                 console.log(dataRow)
                 tableRows.push(dataRow)
             })
-            let height = $(window).height();
+            // let height = $(window).height();
             filterSize = 10
             if (height > 600) {
                 filterSize = 25;
