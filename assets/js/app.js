@@ -169,27 +169,20 @@ function getSongs(album, index) {
         "method": "GET",
     }).then(function (data) {
         let arrayOfTracks = data.album.tracks.track;
-        // console.log(arrayOfTracks)
+
         if (arrayOfTracks.length < 1 || arrayOfTracks === undefined) {
             $(`#view-songs${index}`).html(`<p class="mt-1">Sorry no songs</p>`)
         }
         let trackArray = [];
         arrayOfTracks.forEach(function (track) {
-            // console.log(track)
 
             $(`#view-songs${index}`).on("click", function () {
-                // $("#animation-div").fadeOut(1500);
                 $(".artist-cards").fadeOut(fadeDuration)
-                // $(".search-songs-div").fadeOut(1500)
-
                 trackArray.push(`<div class="card col-sm-6 col-md-4 col-lg-3 ml-auto mr-auto" style="height:100px"><div class="track-name"><h4>${track.name}</h4></div><div class="track-duration"><p>Duration: ${turnSec(track.duration)}</p></div></div>`)
                 $(".list-songs-div").html(`<div class="album-songs">${albumImage}<div class="list-songs">${trackArray}</div></<div>`)
                 $(".list-songs-div").fadeIn(fadeDuration);
-
             })
         })
-        // console.log(data)
-
     })
 }
 
@@ -251,6 +244,10 @@ function buildTable(array) {
         lengthChange: false,
         responsive: true,
         autoWidth: false,
+        language: {
+            searchPlaceholder: "Search Charts",
+            search: "",
+        },
         columns: [
             { title: "#", width: "5%" },
             { title: "Name", width: "15%" },
@@ -262,7 +259,7 @@ function buildTable(array) {
 }
 // Sets the size of DataTable
 function tableResize(height) {
-    if (height > 620) {
+    if (height > 670) {
         table.page.len(25).draw();
     } else {
         table.page.len(10).draw();

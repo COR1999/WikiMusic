@@ -36,22 +36,20 @@ One or two paragraphs providing an overview of your project.
 Essentially, this part is your sales pitch.
 
 ## UX
-In this project what i try to accive with my UX is a nice and simple way to find a small ammount of information on music.
-i have tried to make the colors easy to look at and the pictures as calming and relaxing as possible.
-the way i have layed out the website is basicly front page is to search for artist/albums/songs and the second page is too view the top 100.
-
+In this project I wish to achieve a UX that is a nice and simple way to find some information based on search criteria.
+I made the colors easy to look at and the pictures as calming and relaxing as possible.
+The way i created the website as a single page application. Showing the current top 100 and the ability to search for artist/albums/songs.
 
 ## Features
 In this section, you should go over the different parts of your project, and describe each in a sentence or so.
-
 ### Existing Features
 
 1. Mobile first responsive design so that the application looks good and performs well on multiple device resolution.
-2. This applications header has the brand name
-3. The footer on this project has links to social media and has a copyright stamp
-4. The search form allows you to search for an Album/Artist or Song name.
-5. View album songs is a button when u search for a Album/Artist you can click this button to view the songs in that Album.
-6. View top 100 Is a table that shows you the top 100 songs currently you can also sort them by ranking name artist and playcount. You can search for songs too.
+2. 
+3. 
+4. The search form allows you to search for an Album/Artist or Song name Using the [LastFM](https://www.last.fm/api/) API.
+5. You can search for a Album/Artist and then you can click on the view songs button to view the songs in that Album.
+6. View top 100 Is a table that shows you the top 100 songs currently you can also sort them by ranking name artist and playcount. You can search for songs in the top 100.
 7. 
 
 
@@ -65,10 +63,10 @@ In this section, you should go over the different parts of your project, and des
 
 ## Technologies Used
 1. [HTML5](https://en.wikipedia.org/wiki/HTML5 )
- 1. The application was created as static html page's.
+ 1. 
 2. [CSS3](https://en.wikipedia.org/wiki/Cascading_Style_Sheets )
  1. CSS was used to style the HTML
- 2. The style sheet was kept seperate from the html.
+ 2. The style sheet was mostly kept seperate from the html.
 3. [Bootstrap Version 4.4.1](https://getbootstrap.com/ )
  1. Bootstrap compenents such as grid,card,button,table,navbar where used in my project to simplfy creating responsive web application
 4. [Jquery](https://jquery.com/)
@@ -96,11 +94,12 @@ In this section, you should go over the different parts of your project, and des
 2. Application Testing
     1. I clicked on all the links in navbar to make sure they linked the to correct page.
     2. I ran all my tests on local host(root website) then pushed it onto github (where ran off the subdomain). Checked that all resources loaded properly off the root and subdomain.
-    3. I tested that it worked on my iphone 6 in Safari and Google chrome.
     4. I put console logs where the data changed values in my code to find bug.
     5. I checked the chrome console for errors and what line they where on and fixed bugs this way too.
     6. I checked on mobile to see that everything was working correctly.
-    7. when i was implamenting the animations i had some problems with it working on mobile but after looking up a few threads i found a soluation
+    7. When i was implamenting the animations i had some problems with it working on mobile but after looking up a few threads i found a soluation
+    8. i tried to get the application to work on safri on mobile but couldnt seem to get it working properly there is overflow and i couldnt seem to get rid of this
+
 ## Deployment
 I used a local host and once I was happy I commited to github to check that everything ran smoothly there as well. 
 
@@ -108,6 +107,7 @@ I used a local host and once I was happy I commited to github to check that ever
 ### Content
 I used [Bootstrap Version 4.4.1](https://getbootstrap.com/ ) grid system.
 I used [DataTables](https://datatables.net/) to present my table.
+I used [StackOverflow](https://stackoverflow.com/) to solve problems that i couldnt figure out
 ### Media
 I used [Pexels](https://www.pexels.com/) for my images.    
 ### Acknowledgements

@@ -72,6 +72,15 @@ body{
     /* clear: both; */
     /* height: 100%; */
 }
+.input{
+    width: auto;
+    color: #FC9F5B;
+    background-color: #7f7f7f;
+    border: 1px solid #E27D60;
+    text-align: center;
+    margin-top: 10px;
+    padding: 10px;
+}
 /* @media(max-width: 950px){
     .column-chart {
         float: none;
@@ -129,26 +138,30 @@ body{
     text-align: center;
     top: 15%;
     background:rgba(0,0,0,0.4);
-    margin-left: 25%; 
-    margin-right: 25%;
-    margin-top: 2%;
-    margin-bottom: 2%;
+    margin-left: 10%; 
+    margin-right: 10%;
+    margin-top: 10%;
+    margin-bottom: 10%;
+    padding-top: 10%;
+}
+.search-bar option{
+    /* width: auto; */
 }
 
-.search-form input{
-    width: auto;
-    color: #FC9F5B;
-    text-align: center;
-    margin-top: 10px;
-    padding: 10px;
-}
+
+
 @media(max-width:450px){
-    .search-form input{
+    /* .search-form input{
         width: 70%;
-    }
+    } */
     .choose h2{
         font-size: 130%;
     }
+}
+.search-form input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #212529;
+    font-weight: 1000;
+    opacity: 1; /* Firefox */
 }
 
 .search-form button{
@@ -189,6 +202,7 @@ body{
 .option-menu{
     text-align: center;
     width:auto;
+    margin: 10%;
     /* width: 50px; */
 }
 
@@ -197,6 +211,10 @@ body{
     color: #212529;
     border: 1px solid #E27D60;
     font-weight: 600;
+    width: auto;
+}
+.form-control input{
+    color: #FC9F5B;
 }
 
 /*Click here to go to charts page Styleing*/
@@ -483,11 +501,13 @@ table.dataTable tr.odd td.sorting_1 {
     font-size: 20px;
 }
 #chart-table_filter input{
-    background-color: #C0C0C0;
-    color: #E27D60;
+    background-color: #7f7f7f;
+    color: #212529;
     border: #E27D60 solid 1px;
 }
-
+.dataTables_filter input::placeholder{
+    color: #212529;
+}
 table.dataTable td {
     padding: 2px 1px;
 }
