@@ -144,17 +144,12 @@ function apiUrl(searchType, input) {
             console.log("unKnown Input", searchBy);
 
     }
-    // if (input.length === 0) {
-    //     console.log("unKnown Input", input)
-    //     $(".info-text").html("<h1>Invalid Input</h1>")
-    // }
     return (
         $.ajax({
             "async": true,
             "crossDomain": true,
             "url": `${baseUrl}/2.0/?method=${searchBy}${input}&api_key=${apiKey}&limit=${limit}&format=json`,
             "method": "GET",
-
         }))
 }
 

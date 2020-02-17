@@ -22,12 +22,10 @@ The way i created the website as a single page application. Showing the current 
 
 
 
-
-
 ### Future Enhancements
 1. If i was doing this in the future i would love to use spotifys api and be able to play music because with lastFM api i wasnt able to do this.
 2. I Would like to add smoother animations.
-3. 
+3. I would like to be able to think of a good plan for the website, i struggled abit to think of a name and what exactly am i trying to do.
 
 ## Technologies Used
 1. [HTML5](https://en.wikipedia.org/wiki/HTML5 )
@@ -68,6 +66,7 @@ The way i created the website as a single page application. Showing the current 
     7. When i was implementing the animations i had some problems with it working on mobile but after looking up a few threads i found a solution
     8. I tried to get the application to work on safari on mobile but couldn't seem to get it working properly there is overflow and I couldn't seem to get rid of this. I changed the size of the buttons and this didn't change it on other devices and browsers the buttons wrapped but on safari it didn't. I ran my css through an autoprefixer but this didn't seem to fix the problem
     9. When you search in that charts and u have it showing 25 songs the page shows blank html space.
+    10. When i started the project i tried many different apis including deezer and spotify's api but wasnt able to use theae because they required a back end server
 
 ## Deployment
 I used a local host and once I was happy I committed to github to check that everything ran smoothly there as well. 
