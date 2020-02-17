@@ -326,47 +326,15 @@ body{
 .bg-navbar{
     background-color: #E8A87C;
 }
-.navbar-light .navbar-brand,
-.navbar-light .navbar-nav .active>.nav-link,
-.navbar-light .navbar-nav .nav-link{
+.navbar-light .navbar-brand{
     color: #557A95;
     font-weight: 600;
     font-size: 20px;
 }
-.navbar-collapse{
-    text-align: center;
-}
-.navbar-brand{
-    padding-top: 0;
-}
-@media (max-width: 600px){
-    .navbar-brand{
-        margin: 0;
-    }
-}
+
 .navbar-light .navbar-brand:focus, .navbar-light .navbar-brand:hover,
 .navbar-light .navbar-nav .nav-link:hover{
     color: #7f7f7f;
-}
-
-.active{
-    border-bottom: 2px solid #557A95;
-    border-bottom-width: 5px;
-}
-.navbar-toggler{
-    margin-left: auto;
-    margin-right: auto;
-}
-
-/*Hero image*/
-.hero-image{
-    /* background-image: url("images/headphones-guy.jpeg");
-    background-position: center;
-    background-repeat: no-repeat;
-    width: auto;
-    min-height: 652px;
-    clear: both; */
-    /* padding-top: 10%; */
 }
 /*Footer*/
 #footer{
@@ -422,35 +390,13 @@ color: #E27D60;
 padding: 10px;
 }
 /*Top Charts table*/
-.table-holder{
-    /* position: relative; */
-}
-
-.charts-image{
-    /* background-image: url("images/calming-lake-orignal.jpeg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: auto; */
-    /* height: 100vh; */
-    /* height: 100%; */
-    /* height: 120%; */
-    /* padding-bottom: 5px; */
-    /* position: relative; */
-    /* clear: both; */
-}
 .charts-outer{
     /* height: 120%; */
     padding: 0;
     color: #212529;
     clear: both;
 }
-.chart{
-    /* background-image: url("images/calming-lake-orignal.jpeg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: auto; */
-    /* height: 100vh; */
-}
+
 #chart-table > tbody > tr{
     background-color: transparent;
 }
@@ -466,19 +412,9 @@ table.dataTable tr.odd td.sorting_1 {
 #chart-table{
     font-weight: 600;
     font-size: 16px;
-    /* margin: auto; */
     text-align: center;
     background-color: rgba(255, 255, 255, 0.3);
-    /* width: 100%; */
-    /* height: 70%; */
-    /* margin-top: 10px;
-    height: 100%; */
 }
-/* #chart-table_wrapper{
-    height: 100%;
-    padding-top: 5px;
-} */
-
 
 .dataTables_length {
     margin: auto;
@@ -487,12 +423,12 @@ table.dataTable tr.odd td.sorting_1 {
     margin-left: 50px;
 
 }
-.dtr-details{
+/* .dtr-details{
     list-style: none;
     text-align: center;
     padding: 0;
     margin: auto;
-}
+} */
 
 #chart-table_filter{
     font-weight: 800;
@@ -513,22 +449,16 @@ table.dataTable td {
 }
 table.dataTable thead th {
     padding: 0;
-
 }
 
 /*remove display none to show entries */
 .dataTables_info {
     display: none;
-    clear: both;
-    float: left;
-    color: #E27D60;
-    background-color: rgba(0, 0, 0, 0.2);
-    margin-left: 10px;
 }
 
 .dataTables_paginate > a,
 .dataTables_paginate > span {
-    font-weight: 800;
+    /* font-weight: 800; */
     font-size: 24px;
     color: #212529;
     margin: 10px;
@@ -552,8 +482,6 @@ table.dataTable thead th {
 }
 
 
-
-
 .charts-image h2{
     font-size: 20px;
     font-weight: 600;
@@ -563,7 +491,6 @@ table.dataTable thead th {
 .chart-info > h2{
     font-size: 130%;
     font-weight: 1000;
-    /* background-color: rgba(0, 0, 0, 0.4); */
     padding: 10px;
     text-align: center;
 }

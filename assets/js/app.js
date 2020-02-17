@@ -46,7 +46,6 @@ function GetSelectedValue() {
     let result = e.options[e.selectedIndex].value;
     // $(e).focus();
     $(result).toggleClass('active');
-    // console.log(result);
     searchTheAPI(result);
 }
 
@@ -70,7 +69,7 @@ function searchTheAPI(result) {
                     let albumArray = response.results.albummatches.album;
                     let rows = createAlbumCards(albumArray);
 
-                    $(".artist-cards").html(`<center><h2>Search Results</h2></center>${rows.join("")}`)
+                    $(".artist-cards").html(`<center><h2>Search Results for ${input}</h2></center>${rows.join("")}`)
                     $(".artist-cards").fadeIn(fadeDuration)
                 })
         } else if (searchType === "song") { // Checks to see if the dropdown value is Song and if it is goes to the songs endpoint and displays the data
@@ -83,7 +82,7 @@ function searchTheAPI(result) {
                     trackArray = response.results.trackmatches.track;
                     let rows = createSongsCards(trackArray);
 
-                    $(".song-search-div").html(`<div class="song-search-outer"><h2>Search Results</h2>${rows.join("")}</div>`);
+                    $(".song-search-div").html(`<div class="song-search-outer"><h2>Search Results for ${input}</h2>${rows.join("")}</div>`);
                     $(".song-search-div").fadeIn(fadeDuration)
                 })
 
@@ -213,6 +212,7 @@ function getCharts() {
                 let trackName = track.name
                 let artistName = track.artist.name
                 let playCount = numberWithCommas(track.playcount)
+
                 dataRow.push(newIndex)
                 dataRow.push(trackName);
                 dataRow.push(artistName);
