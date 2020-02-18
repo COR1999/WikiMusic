@@ -153,7 +153,7 @@ function apiUrl(searchType, input) {
         }))
 }
 
-// Gets the song when u click on the album/artist card
+// Gets the song when you click on the album/artist card
 function getSongs(album, index) {
     let albumImage = checkIfImageExists(album);
     $.ajax({

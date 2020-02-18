@@ -85,13 +85,6 @@ body{
 }
 
 /*Search Form*/
-.choose h2{
-    text-align: center;
-    color: #E27D60;
-    padding: 10px;
-    font-size: 26px;
-}
-
 .search-bar{
     display: block;
     position: relative;
