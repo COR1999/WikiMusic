@@ -18,18 +18,19 @@ The way i created the website as a single page application. Showing the current 
 4. The search form allows you to search for an Album/Artist or Song name Using the [LastFM](https://www.last.fm/api/) API.
 5. You can search for a Album/Artist and then you can click on the view songs button to view the songs in that Album.
 6. View top 100 Is a table that shows you the top 100 songs currently you can also sort them by ranking name artist and playcount. You can search for songs in the top 100.
-7. 
+7. When you resize the page vertically the top 100 charts go from showing 10 on each page to showing 25.
 
 
 
 ### Future Enhancements
-1. If i was doing this in the future i would love to use spotifys api and be able to play music because with lastFM api i wasnt able to do this.
+1. If i was doing this in the future i would love to use spotifys api and be able to play music because with lastFM api i wasn't able to do this.
 2. I Would like to add smoother animations.
-3. I would like to be able to think of a good plan for the website, i struggled abit to think of a name and what exactly am i trying to do.
+3. I would like to be able to think of a good plan for the website, i struggled a bit to think of a name and what exactly am i trying to do.
+4. Would like to make it more professional.
 
 ## Technologies Used
 1. [HTML5](https://en.wikipedia.org/wiki/HTML5 )
- 1. 
+ 1. I used HTML for the basic structure of the website
 2. [CSS3](https://en.wikipedia.org/wiki/Cascading_Style_Sheets )
  1. CSS was used to style the HTML
  2. The style sheet was mostly kept seperate from the html.
@@ -58,15 +59,16 @@ The way i created the website as a single page application. Showing the current 
     5. I used the device toolbar to check that my website was rendered in a responsive manner on all device's
     6. I installed the chrome [lighthouse](https://developers.google.com/web/tools/lighthouse) plugin to use the audit feature to check Performance, progressive web app, Best practices, accessibility and SEO.
 2. Application Testing
-    1. 
+    1. I tested that everything worked okay when resizing the browser.
     2. I ran all my tests on local host(root website) then pushed it onto github (where ran off the subdomain). Checked that all resources loaded properly off the root and subdomain.
     4. I put console logs where the data changed values in my code to find bug.
     5. I checked the chrome console for errors and what line they where on and fixed bugs this way too.
     6. I checked on mobile to see that everything was working correctly.
     7. When i was implementing the animations i had some problems with it working on mobile but after looking up a few threads i found a solution
     8. I tried to get the application to work on safari on mobile but couldn't seem to get it working properly there is overflow and I couldn't seem to get rid of this. I changed the size of the buttons and this didn't change it on other devices and browsers the buttons wrapped but on safari it didn't. I ran my css through an autoprefixer but this didn't seem to fix the problem
-    9. When you search in that charts and u have it showing 25 songs the page shows blank html space.
-    10. When i started the project i tried many different apis including deezer and spotify's api but wasnt able to use theae because they required a back end server
+    9. When u have the top 100 charts showing 25 on each page if u search the charts you then get white space at the bottom of the page
+    10. When i started the project i tried many different apis including deezer and spotify's api but wasn't able to use these because they required a back end server.
+    11. 
 
 ## Deployment
 I used a local host and once I was happy I committed to github to check that everything ran smoothly there as well. 
@@ -75,7 +77,7 @@ I used a local host and once I was happy I committed to github to check that eve
 ### Content
 I used [Bootstrap Version 4.4.1](https://getbootstrap.com/ ) grid system.
 I used [DataTables](https://datatables.net/) to present my table.
-I used [StackOverflow](https://stackoverflow.com/) to solve problems that i couldnt figure out
+I used [StackOverflow](https://stackoverflow.com/) to solve problems that i couldn't figure out
 ### Media
 I used [Pexels](https://www.pexels.com/) for my images.    
 ### Acknowledgements
