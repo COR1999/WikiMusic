@@ -167,11 +167,13 @@ function getSongs(album, index) {
         if (arrayOfTracks.length < 1 || arrayOfTracks === undefined) {
             $(`#view-songs${index}`).html(`<p class="mt-1">Sorry no songs</p>`)
         }
+
         let trackArray = [];
         arrayOfTracks.forEach(function (track) {
 
             $(`#view-songs${index}`).on("click", function () {
                 $(".artist-cards").fadeOut(fadeDuration)
+
                 trackArray.push(`<div class="card col-sm-6 col-md-4 col-lg-3 ml-auto mr-auto" style="height:100px"><div class="track-name"><h4>${track.name}</h4></div><div class="track-duration"><p>Duration: ${turnSec(track.duration)}</p></div></div>`)
                 $(".list-songs-div").html(`<div class="album-songs">${albumImage}<div class="list-songs">${trackArray}</div></<div>`)
                 $(".list-songs-div").fadeIn(fadeDuration);
@@ -224,7 +226,6 @@ function turnSec(s) {
     var minutes = ("00" + Math.floor((s % 3600) / 60)).slice(-2);
     let seconds = ("00" + (s % 3600) % 60).slice(-2);
     return minutes + ":" + seconds;
-
 }
 // divides a digit with a comma eg:3,540,343 = 3,540,343
 function numberWithCommas(num) {
