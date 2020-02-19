@@ -17,7 +17,7 @@ $(document).ready(function () {
     });
 
     // Only listens for the submit on the Home page
-    getCharts()
+    getCharts();
     submit.on("click", function () {
         GetSelectedValue();
         $('html,body').animate({
@@ -63,14 +63,14 @@ function searchTheAPI(result) {
             apiUrl(searchType, input)
                 .then(function (response) {
                     // Animations
-                    $(".song-search-div").fadeOut(fadeDuration)
-                    $(".list-songs-div").fadeOut(fadeDuration)
+                    $(".song-search-div").fadeOut(fadeDuration);
+                    $(".list-songs-div").fadeOut(fadeDuration);
 
                     let albumArray = response.results.albummatches.album;
                     let rows = createAlbumCards(albumArray);
 
-                    $(".artist-cards").html(`<center><h2>Search Results for ${input}</h2></center>${rows.join("")}`)
-                    $(".artist-cards").fadeIn(fadeDuration)
+                    $(".artist-cards").html(`<center><h2>Search Results for ${input}</h2></center>${rows.join("")}`);
+                    $(".artist-cards").fadeIn(fadeDuration);
                 })
         } else if (searchType === "song") { // Checks to see if the dropdown value is Song and if it is goes to the songs endpoint and displays the data
             apiUrl(searchType, input)
@@ -83,7 +83,7 @@ function searchTheAPI(result) {
                     let rows = createSongsCards(trackArray);
 
                     $(".song-search-div").html(`<div class="song-search-outer"><h2>Search Results for ${input}</h2>${rows.join("")}</div>`);
-                    $(".song-search-div").fadeIn(fadeDuration)
+                    $(".song-search-div").fadeIn(fadeDuration);
                 })
 
             // Sets the drop down value to a empty string
@@ -97,7 +97,7 @@ function createSongsCards(trackArray) {
     let newTrackArray = [];
     let NumberPerRow = 4;
     trackArray.forEach(function (track, index) {
-        newTrackArray.push(`<div class="card songs-search col-sm-6 col-md-3 col-lg-2"><h4>${track.name}</h4><p>Artist: ${track.artist}<br>Total listens: ${(numberWithCommas(track.listeners))}</p></div>`)
+        newTrackArray.push(`<div class="card songs-search col-sm-6 col-md-3 col-lg-2"><h4>${track.name}</h4><p>Artist: ${track.artist}<br>Total listens: ${(numberWithCommas(track.listeners))}</p></div>`);
         if ((index + 1) % NumberPerRow === 0 || (index + 1) === trackArray.length) {
             rows.push(`<div class="row">${newTrackArray.join("")}</div>`);
             newTrackArray.length = 0;
@@ -111,7 +111,7 @@ function createAlbumCards(albumArray) {
     let NumberPerRow = 12;
     albumArray.forEach(function (album, index) {
         let albumImage = checkIfImageExists(album);
-        cardRow.push(`<div class="card col-sm-12 col-md-6 col-lg-4">${albumImage}<h1>${album.artist}</h1><p class="title">${album.name}</p><button class="viewAlbum-songs"id="view-songs${index}">View Songs</button></div>`)
+        cardRow.push(`<div class="card col-sm-12 col-md-6 col-lg-4">${albumImage}<h1>${album.artist}</h1><p class="title">${album.name}</p><button class="viewAlbum-songs"id="view-songs${index}">View Songs</button></div>`);
         if ((index + 1) % NumberPerRow === 0 || (index + 1) === albumArray.length) {
             rows.push(`<div class="row">${cardRow.join("")}</div>`);
             cardRow.length = 0;
@@ -129,16 +129,16 @@ function apiUrl(searchType, input) {
     switch (searchType) {
         case "album":
             searchBy = "album.search&album=";
-            limit = "20"
+            limit = "20";
             break;
         case "song":
             searchBy = "track.search&track=";
-            limit = "20"
+            limit = "20";
             break;
         case "chart":
             searchBy = "chart.gettoptracks";
             input = "";
-            limit = "100"
+            limit = "100";
             break;
         default:
             console.log("unKnown Input", searchBy);
@@ -165,17 +165,17 @@ function getSongs(album, index) {
         let arrayOfTracks = data.album.tracks.track;
 
         if (arrayOfTracks.length < 1 || arrayOfTracks === undefined) {
-            $(`#view-songs${index}`).html(`<p class="mt-1">Sorry no songs</p>`)
+            $(`#view-songs${index}`).html(`<p class="mt-1">Sorry no songs</p>`);
         }
 
         let trackArray = [];
         arrayOfTracks.forEach(function (track) {
 
             $(`#view-songs${index}`).on("click", function () {
-                $(".artist-cards").fadeOut(fadeDuration)
+                $(".artist-cards").fadeOut(fadeDuration);
 
-                trackArray.push(`<div class="card col-sm-6 col-md-4 col-lg-3 ml-auto mr-auto" style="height:100px"><div class="track-name"><h4>${track.name}</h4></div><div class="track-duration"><p>Duration: ${turnSec(track.duration)}</p></div></div>`)
-                $(".list-songs-div").html(`<div class="album-songs">${albumImage}<div class="list-songs">${trackArray}</div></<div>`)
+                trackArray.push(`<div class="card col-sm-6 col-md-4 col-lg-3 ml-auto mr-auto" style="height:100px"><div class="track-name"><h4>${track.name}</h4></div><div class="track-duration"><p>Duration: ${turnSec(track.duration)}</p></div></div>`);
+                $(".list-songs-div").html(`<div class="album-songs">${albumImage}<div class="list-songs">${trackArray}</div></<div>`);
                 $(".list-songs-div").fadeIn(fadeDuration);
             })
         })
@@ -205,18 +205,18 @@ function getCharts() {
             let tracksArray = response.tracks.track;
             tracksArray.forEach(function (track, index) {
                 let dataRow = [];
-                let newIndex = index + 1
-                let trackName = track.name
-                let artistName = track.artist.name
-                let playCount = numberWithCommas(track.playcount)
+                let newIndex = index + 1;
+                let trackName = track.name;
+                let artistName = track.artist.name;
+                let playCount = numberWithCommas(track.playcount);
 
-                dataRow.push(newIndex)
+                dataRow.push(newIndex);
                 dataRow.push(trackName);
                 dataRow.push(artistName);
                 dataRow.push(playCount);
-                tableRows.push(dataRow)
+                tableRows.push(dataRow);
             })
-            buildTable(tableRows)
+            buildTable(tableRows);
         })
 
 }
